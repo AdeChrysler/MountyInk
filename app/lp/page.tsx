@@ -5,18 +5,6 @@ import { useState } from "react";
 
 const LOGO = "https://s3.zenova.id/ads/monty-ink/brand/v10/v10-needle-rose-bali.png";
 const TATTOOED_ARM = "https://s3.zenova.id/ads/monty-ink/brand/v10/v10-tattooed-arm-art.png";
-const ROTARY = "https://s3.zenova.id/ads/monty-ink/brand/v10/v10-rotary-machine-mandala.png";
-const INK_BOTTLE = "https://s3.zenova.id/ads/monty-ink/brand/v10/v10-ink-bottle-mandala-ring.png";
-const COIL = "https://s3.zenova.id/ads/monty-ink/brand/v10/v10-coil-machine-ink-flow.png";
-
-const PORTFOLIO = [
-  TATTOOED_ARM,
-  ROTARY,
-  COIL,
-  INK_BOTTLE,
-  LOGO,
-  TATTOOED_ARM,
-];
 
 const WA_LINK = "https://wa.me/6282144441888?text=Hi%20Monty%20Ink%2C%20I%27d%20like%20to%20begin%20my%20piece.";
 
@@ -39,6 +27,13 @@ const reviews = [
     text: "I flew back to Bali specifically for my second piece with Monty Ink. That tells you everything.",
     rating: 5,
   },
+];
+
+const styles = [
+  { label: "Mandala", sub: "Sacred geometry" },
+  { label: "Realism", sub: "Photo-perfect detail" },
+  { label: "Japanese", sub: "Traditional Irezumi" },
+  { label: "Geometric", sub: "Precise linework" },
 ];
 
 const valueProps = [
@@ -122,10 +117,10 @@ export default function LandingPage() {
         target="_blank"
         rel="noopener noreferrer"
         onClick={() => triggerWALead()}
-        className="fixed bottom-6 right-6 z-50 md:hidden flex items-center gap-2 px-5 py-3 shadow-lg shadow-[#2E7BFF]/30 text-sm font-medium text-[#F5F5F7] tracking-wide"
+        className="fixed bottom-6 right-6 z-50 md:hidden flex items-center gap-2 px-5 py-3 shadow-lg shadow-[#2E7BFF]/40 text-sm font-semibold text-[#F5F5F7] tracking-wide rounded-sm"
         style={{ background: "linear-gradient(135deg, #1A3A6B, #2E7BFF)", fontFamily: "var(--font-cinzel)" }}
       >
-        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <svg className="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
           <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.862L.057 23.714a.5.5 0 00.617.639l5.945-1.566A11.942 11.942 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.846 0-3.577-.474-5.085-1.307l-.364-.209-3.772.993.994-3.734-.228-.374A9.963 9.963 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" />
         </svg>
@@ -133,7 +128,7 @@ export default function LandingPage() {
       </a>
 
       {/* Header */}
-      <header className="py-6 px-6 flex items-center justify-between max-w-5xl mx-auto">
+      <header className="py-5 px-6 flex items-center justify-between max-w-5xl mx-auto border-b border-[#1A3A6B]/20">
         <div className="flex items-center gap-3">
           <div className="relative w-8 h-8">
             <Image src={LOGO} alt="Monty Ink" fill className="object-contain" />
@@ -150,7 +145,7 @@ export default function LandingPage() {
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => triggerWALead()}
-          className="hidden md:block px-6 py-2.5 text-xs tracking-[0.2em] uppercase text-[#F5F5F7] transition-all hover:shadow-lg hover:shadow-[#2E7BFF]/30"
+          className="hidden md:block px-6 py-2.5 text-xs tracking-[0.2em] uppercase text-[#F5F5F7] transition-all hover:shadow-lg hover:shadow-[#2E7BFF]/30 hover:-translate-y-0.5"
           style={{ fontFamily: "var(--font-cinzel)", background: "linear-gradient(135deg, #1A3A6B, #2E7BFF)" }}
         >
           Begin Your Piece
@@ -159,17 +154,17 @@ export default function LandingPage() {
 
       {/* Hero */}
       <section
-        className="relative overflow-hidden py-20 md:py-32 px-6 min-h-[75vh] flex items-center"
+        className="relative overflow-hidden py-20 md:py-32 px-6 min-h-[80vh] flex items-center"
         style={{ background: "linear-gradient(135deg, #0A0A0F 0%, #0D2244 50%, #1A3A6B 100%)" }}
       >
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 pointer-events-none"
           style={{ background: "radial-gradient(ellipse 80% 60% at 60% 50%, rgba(46,123,255,0.12) 0%, transparent 70%)" }}
         />
         <div className="relative z-10 max-w-5xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center">
           <div>
             <p
-              className="text-xs tracking-[0.4em] uppercase text-[#2E7BFF] mb-4"
+              className="text-xs tracking-[0.4em] uppercase text-[#2E7BFF] mb-5"
               style={{ fontFamily: "var(--font-inter)" }}
             >
               Premium Tattoo Studio · Bali
@@ -187,7 +182,7 @@ export default function LandingPage() {
               </span>
             </h1>
             <p
-              className="text-[#C8D0DC]/80 text-lg leading-relaxed mb-8"
+              className="text-[#C8D0DC]/80 text-lg leading-relaxed mb-8 max-w-md"
               style={{ fontFamily: "var(--font-inter)" }}
             >
               Custom tattoos only. No templates, no rush. Just exceptional art on skin,
@@ -220,7 +215,7 @@ export default function LandingPage() {
               priority
             />
             <div
-              className="absolute inset-0"
+              className="absolute inset-0 pointer-events-none"
               style={{ background: "linear-gradient(to bottom, transparent 60%, #0A0A0F 100%)" }}
             />
           </div>
@@ -231,7 +226,7 @@ export default function LandingPage() {
       <section className="py-16 px-6 border-y border-[#1A3A6B]/30">
         <div className="max-w-5xl mx-auto">
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-4 md:gap-8 text-center mb-16">
+          <div className="grid grid-cols-3 gap-4 md:gap-8 text-center mb-14">
             {[
               { value: "500+", label: "Happy Clients" },
               { value: "★ 4.9", label: "Average Rating" },
@@ -239,7 +234,7 @@ export default function LandingPage() {
             ].map((s) => (
               <div key={s.label}>
                 <div
-                  className="text-2xl md:text-4xl font-bold text-[#2E7BFF] mb-1"
+                  className="text-2xl md:text-4xl font-bold text-[#2E7BFF] mb-1.5"
                   style={{ fontFamily: "var(--font-cinzel)" }}
                 >
                   {s.value}
@@ -255,24 +250,24 @@ export default function LandingPage() {
           </div>
 
           {/* Reviews */}
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-5">
             {reviews.map((r) => (
               <div
                 key={r.name}
-                className="p-6 border border-[#1A3A6B]/40 bg-[#0D0D12]"
+                className="p-6 border border-[#1A3A6B]/40 bg-[#0D0D12] flex flex-col gap-4"
               >
-                <div className="flex gap-1 mb-3">
+                <div className="flex gap-1">
                   {Array.from({ length: r.rating }).map((_, i) => (
                     <span key={i} className="text-[#2E7BFF] text-sm">★</span>
                   ))}
                 </div>
                 <p
-                  className="text-[#C8D0DC]/80 text-sm leading-relaxed mb-4 italic"
+                  className="text-[#C8D0DC]/80 text-sm leading-relaxed italic flex-1"
                   style={{ fontFamily: "var(--font-inter)" }}
                 >
                   &ldquo;{r.text}&rdquo;
                 </p>
-                <div>
+                <div className="border-t border-[#1A3A6B]/30 pt-4">
                   <div
                     className="text-sm font-semibold text-[#F5F5F7]"
                     style={{ fontFamily: "var(--font-cinzel)" }}
@@ -292,7 +287,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Portfolio Strip */}
+      {/* Portfolio */}
       <section className="py-20 px-6 bg-[#0D0D12]">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-10">
@@ -300,7 +295,7 @@ export default function LandingPage() {
               className="text-xs tracking-[0.4em] uppercase text-[#2E7BFF] mb-3"
               style={{ fontFamily: "var(--font-inter)" }}
             >
-              Recent Work
+              Our Work
             </p>
             <h2
               className="text-3xl md:text-4xl font-bold text-[#F5F5F7]"
@@ -308,22 +303,88 @@ export default function LandingPage() {
             >
               The Portfolio
             </h2>
+            <p
+              className="text-[#C8D0DC]/50 text-sm mt-3"
+              style={{ fontFamily: "var(--font-inter)" }}
+            >
+              Every piece is custom — designed exclusively for one client.
+            </p>
           </div>
+
+          {/* Featured + style grid */}
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-            {PORTFOLIO.map((src, i) => (
-              <div key={i} className="relative aspect-square overflow-hidden group">
-                <Image
-                  src={src}
-                  alt={`Portfolio ${i + 1}`}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
-                />
+            {/* Featured large piece — spans 2 rows on desktop */}
+            <div className="relative col-span-2 md:col-span-1 md:row-span-2 aspect-[4/3] md:aspect-auto overflow-hidden group min-h-[200px]">
+              <Image
+                src={TATTOOED_ARM}
+                alt="Custom tattoo artwork — Monty Ink"
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                priority
+              />
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{ background: "linear-gradient(to top, rgba(10,10,15,0.7) 0%, transparent 50%)" }}
+              />
+              <div className="absolute bottom-4 left-4">
+                <span
+                  className="text-xs tracking-[0.2em] uppercase text-[#2E7BFF]"
+                  style={{ fontFamily: "var(--font-inter)" }}
+                >
+                  Custom Realism
+                </span>
+              </div>
+            </div>
+
+            {/* Style cards */}
+            {styles.map((style, i) => (
+              <div
+                key={style.label}
+                className="relative aspect-square overflow-hidden group flex flex-col items-center justify-center"
+                style={{
+                  background: i % 2 === 0
+                    ? "linear-gradient(135deg, #0D2244 0%, #1A3A6B 100%)"
+                    : "linear-gradient(135deg, #0A0A0F 0%, #0D2244 100%)",
+                  border: "1px solid rgba(46,123,255,0.15)",
+                }}
+              >
                 <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  style={{ background: "rgba(46,123,255,0.2)" }}
+                  className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  style={{ background: "rgba(46,123,255,0.08)" }}
+                />
+                <div className="relative z-10 text-center px-4">
+                  <div
+                    className="text-2xl md:text-3xl font-bold text-[#F5F5F7] mb-2 tracking-tight"
+                    style={{ fontFamily: "var(--font-cinzel)" }}
+                  >
+                    {style.label}
+                  </div>
+                  <div
+                    className="text-[10px] md:text-xs tracking-[0.2em] uppercase text-[#2E7BFF]/70"
+                    style={{ fontFamily: "var(--font-inter)" }}
+                  >
+                    {style.sub}
+                  </div>
+                </div>
+                <div
+                  className="absolute bottom-0 left-0 right-0 h-0.5"
+                  style={{ background: "linear-gradient(90deg, transparent, rgba(46,123,255,0.4), transparent)" }}
                 />
               </div>
             ))}
+          </div>
+
+          <div className="text-center mt-8">
+            <a
+              href={WA_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => triggerWALead("portfolio-cta")}
+              className="inline-block px-8 py-3 text-xs tracking-[0.2em] uppercase text-[#2E7BFF] border border-[#2E7BFF]/40 hover:border-[#2E7BFF] hover:bg-[#2E7BFF]/10 transition-all"
+              style={{ fontFamily: "var(--font-cinzel)" }}
+            >
+              Discuss Your Idea →
+            </a>
           </div>
         </div>
       </section>
@@ -346,27 +407,27 @@ export default function LandingPage() {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-5">
+          <div className="grid md:grid-cols-2 gap-4">
             {valueProps.map((v) => (
               <div
                 key={v.title}
-                className="flex gap-5 p-6 border border-[#1A3A6B]/40 hover:border-[#2E7BFF]/40 transition-colors"
+                className="flex gap-5 p-6 border border-[#1A3A6B]/40 bg-[#0D0D12] hover:border-[#2E7BFF]/40 transition-colors"
               >
                 <div
-                  className="text-[#2E7BFF] text-2xl shrink-0 mt-0.5"
+                  className="text-[#2E7BFF] text-xl shrink-0 mt-0.5 w-6 text-center"
                   style={{ fontFamily: "var(--font-cinzel)" }}
                 >
                   {v.icon}
                 </div>
                 <div>
                   <h3
-                    className="text-base font-semibold text-[#F5F5F7] mb-2"
+                    className="text-sm font-semibold text-[#F5F5F7] mb-2 tracking-wide"
                     style={{ fontFamily: "var(--font-cinzel)" }}
                   >
                     {v.title}
                   </h3>
                   <p
-                    className="text-sm text-[#C8D0DC]/70 leading-relaxed"
+                    className="text-sm text-[#C8D0DC]/60 leading-relaxed"
                     style={{ fontFamily: "var(--font-inter)" }}
                   >
                     {v.description}
@@ -380,8 +441,8 @@ export default function LandingPage() {
 
       {/* Process */}
       <section className="py-20 px-6 bg-[#0D0D12]">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-14">
             <p
               className="text-xs tracking-[0.4em] uppercase text-[#2E7BFF] mb-3"
               style={{ fontFamily: "var(--font-inter)" }}
@@ -396,57 +457,57 @@ export default function LandingPage() {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-px bg-[#1A3A6B]/20">
             {[
               {
                 step: "01",
                 title: "Consult",
-                description:
-                  "Tell us your idea via WhatsApp. We discuss placement, style, and size — no commitment required.",
-                image: INK_BOTTLE,
+                description: "Message us on WhatsApp. We discuss your idea, placement, style, and size. No commitment — just conversation.",
+                icon: "◎",
               },
               {
                 step: "02",
                 title: "Design",
-                description:
-                  "Your artist drafts a custom design exclusively for you. We refine until it's perfect.",
-                image: ROTARY,
+                description: "Your artist drafts a custom design exclusively for you. We share it, refine together, perfect it.",
+                icon: "◈",
               },
               {
                 step: "03",
                 title: "Ink",
-                description:
-                  "The session. Clean studio, expert hands, art that lasts a lifetime.",
-                image: COIL,
+                description: "The session. Clean studio, expert hands, music of your choice. Art that lasts a lifetime.",
+                icon: "✦",
               },
-            ].map((p) => (
-              <div key={p.step} className="relative">
-                <div className="relative aspect-square mb-5 overflow-hidden">
-                  <Image src={p.image} alt={p.title} fill className="object-cover" />
-                  <div
-                    className="absolute inset-0 flex items-end p-4"
-                    style={{ background: "linear-gradient(to top, rgba(10,10,15,0.8) 0%, transparent 60%)" }}
+            ].map((p, i) => (
+              <div
+                key={p.step}
+                className="relative p-8 bg-[#0D0D12] flex flex-col gap-4"
+              >
+                <div className="flex items-center gap-3 mb-2">
+                  <span
+                    className="text-3xl font-bold text-[#2E7BFF]/20 leading-none"
+                    style={{ fontFamily: "var(--font-cinzel)" }}
                   >
-                    <span
-                      className="text-4xl font-bold text-[#2E7BFF]/30"
-                      style={{ fontFamily: "var(--font-cinzel)" }}
-                    >
-                      {p.step}
-                    </span>
-                  </div>
+                    {p.step}
+                  </span>
+                  <span className="text-[#2E7BFF] text-lg">{p.icon}</span>
                 </div>
                 <h3
-                  className="text-xl font-bold text-[#F5F5F7] mb-2"
+                  className="text-xl font-bold text-[#F5F5F7]"
                   style={{ fontFamily: "var(--font-cinzel)" }}
                 >
                   {p.title}
                 </h3>
                 <p
-                  className="text-sm text-[#C8D0DC]/70 leading-relaxed"
+                  className="text-sm text-[#C8D0DC]/60 leading-relaxed"
                   style={{ fontFamily: "var(--font-inter)" }}
                 >
                   {p.description}
                 </p>
+                {i < 2 && (
+                  <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-10">
+                    <span className="text-[#2E7BFF]/30 text-xl">→</span>
+                  </div>
+                )}
               </div>
             ))}
           </div>
@@ -459,38 +520,53 @@ export default function LandingPage() {
         style={{ background: "linear-gradient(135deg, #0A0A0F 0%, #0D2244 50%, #1A3A6B 100%)" }}
       >
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 pointer-events-none"
           style={{ background: "radial-gradient(ellipse 70% 70% at 50% 50%, rgba(46,123,255,0.12) 0%, transparent 70%)" }}
         />
         <div className="relative z-10 max-w-2xl mx-auto text-center">
-          <div className="flex justify-center mb-6">
-            <div className="relative w-14 h-14">
+          <div className="flex justify-center mb-8">
+            <div className="relative w-16 h-16">
               <Image src={LOGO} alt="Monty Ink" fill className="object-contain" />
             </div>
           </div>
           <h2
-            className="text-3xl md:text-5xl font-bold text-[#F5F5F7] mb-4"
+            className="text-3xl md:text-5xl font-bold text-[#F5F5F7] mb-5"
             style={{ fontFamily: "var(--font-cinzel)" }}
           >
             Ready to Wear Your Story?
           </h2>
           <p
-            className="text-[#C8D0DC]/70 mb-8 leading-relaxed"
+            className="text-[#C8D0DC]/70 mb-10 leading-relaxed max-w-lg mx-auto"
             style={{ fontFamily: "var(--font-inter)" }}
           >
             Message us now — tell us your idea and we&apos;ll get back to you within a few hours.
             Consultation is always free.
           </p>
-          <a
-            href={WA_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => triggerWALead("lp-bottom-cta")}
-            className="inline-block px-12 py-5 text-sm tracking-[0.2em] uppercase font-medium text-[#F5F5F7] transition-all duration-300 hover:shadow-xl hover:shadow-[#2E7BFF]/30 hover:-translate-y-0.5"
-            style={{ fontFamily: "var(--font-cinzel)", background: "linear-gradient(135deg, #1A3A6B, #2E7BFF)" }}
-          >
-            Begin Your Piece
-          </a>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href={WA_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => triggerWALead("lp-bottom-cta")}
+              className="inline-flex items-center gap-2 px-12 py-5 text-sm tracking-[0.2em] uppercase font-medium text-[#F5F5F7] transition-all duration-300 hover:shadow-xl hover:shadow-[#2E7BFF]/30 hover:-translate-y-0.5"
+              style={{ fontFamily: "var(--font-cinzel)", background: "linear-gradient(135deg, #1A3A6B, #2E7BFF)" }}
+            >
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.862L.057 23.714a.5.5 0 00.617.639l5.945-1.566A11.942 11.942 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.846 0-3.577-.474-5.085-1.307l-.364-.209-3.772.993.994-3.734-.228-.374A9.963 9.963 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" />
+              </svg>
+              Begin Your Piece
+            </a>
+            <a
+              href="https://instagram.com/montyink.bali"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-8 py-5 text-sm tracking-[0.2em] uppercase text-[#C8D0DC]/60 border border-[#1A3A6B]/40 hover:border-[#2E7BFF]/40 hover:text-[#C8D0DC] transition-all"
+              style={{ fontFamily: "var(--font-cinzel)" }}
+            >
+              Follow on Instagram
+            </a>
+          </div>
         </div>
       </section>
 
@@ -529,15 +605,15 @@ export default function LandingPage() {
                     {f.q}
                   </span>
                   <span
-                    className={`text-[#2E7BFF] shrink-0 transition-transform duration-300 ${openFaq === i ? "rotate-45" : ""}`}
+                    className={`text-[#2E7BFF] text-xl shrink-0 leading-none transition-transform duration-300 ${openFaq === i ? "rotate-45" : ""}`}
                   >
                     +
                   </span>
                 </button>
                 {openFaq === i && (
-                  <div className="px-6 pb-5">
+                  <div className="px-6 pb-5 border-t border-[#1A3A6B]/30">
                     <p
-                      className="text-sm text-[#C8D0DC]/70 leading-relaxed"
+                      className="text-sm text-[#C8D0DC]/60 leading-relaxed pt-4"
                       style={{ fontFamily: "var(--font-inter)" }}
                     >
                       {f.a}
@@ -568,7 +644,7 @@ export default function LandingPage() {
             className="text-xs text-[#C8D0DC]/30"
             style={{ fontFamily: "var(--font-inter)" }}
           >
-            © 2024 Monty Ink · Seminyak, Bali · All rights reserved
+            © 2025 Monty Ink · Seminyak, Bali · All rights reserved
           </p>
           <a
             href="/"
