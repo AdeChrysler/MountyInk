@@ -7,14 +7,15 @@ const LOGO = "https://s3.zenova.id/ads/monty-ink/brand/v10/v10-needle-rose-bali.
 const TATTOOED_ARM = "https://s3.zenova.id/ads/monty-ink/brand/v10/v10-tattooed-arm-art.png";
 const ROTARY = "https://s3.zenova.id/ads/monty-ink/brand/v10/v10-rotary-machine-mandala.png";
 const INK_BOTTLE = "https://s3.zenova.id/ads/monty-ink/brand/v10/v10-ink-bottle-mandala-ring.png";
+const COIL = "https://s3.zenova.id/ads/monty-ink/brand/v10/v10-coil-machine-ink-flow.png";
 
-const IG_POSTS = [
-  "https://s3.zenova.id/ads/monty-ink/brand/v2/ig-post-1.jpg",
-  "https://s3.zenova.id/ads/monty-ink/brand/v2/ig-post-2.jpg",
-  "https://s3.zenova.id/ads/monty-ink/brand/v2/ig-post-3.jpg",
-  "https://s3.zenova.id/ads/monty-ink/brand/v2/ig-post-4.jpg",
-  "https://s3.zenova.id/ads/monty-ink/brand/v2/ig-post-5.jpg",
-  "https://s3.zenova.id/ads/monty-ink/brand/v2/ig-post-6.jpg",
+const PORTFOLIO = [
+  TATTOOED_ARM,
+  ROTARY,
+  COIL,
+  INK_BOTTLE,
+  LOGO,
+  TATTOOED_ARM,
 ];
 
 const WA_LINK = "https://wa.me/6282144441888?text=Hi%20Monty%20Ink%2C%20I%27d%20like%20to%20begin%20my%20piece.";
@@ -158,14 +159,14 @@ export default function LandingPage() {
 
       {/* Hero */}
       <section
-        className="relative overflow-hidden py-20 md:py-32 px-6"
+        className="relative overflow-hidden py-20 md:py-32 px-6 min-h-[75vh] flex items-center"
         style={{ background: "linear-gradient(135deg, #0A0A0F 0%, #0D2244 50%, #1A3A6B 100%)" }}
       >
         <div
           className="absolute inset-0"
           style={{ background: "radial-gradient(ellipse 80% 60% at 60% 50%, rgba(46,123,255,0.12) 0%, transparent 70%)" }}
         />
-        <div className="relative z-10 max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+        <div className="relative z-10 max-w-5xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center">
           <div>
             <p
               className="text-xs tracking-[0.4em] uppercase text-[#2E7BFF] mb-4"
@@ -230,7 +231,7 @@ export default function LandingPage() {
       <section className="py-16 px-6 border-y border-[#1A3A6B]/30">
         <div className="max-w-5xl mx-auto">
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-6 text-center mb-16">
+          <div className="grid grid-cols-3 gap-4 md:gap-8 text-center mb-16">
             {[
               { value: "500+", label: "Happy Clients" },
               { value: "★ 4.9", label: "Average Rating" },
@@ -308,8 +309,8 @@ export default function LandingPage() {
               The Portfolio
             </h2>
           </div>
-          <div className="grid grid-cols-3 md:grid-cols-6 gap-2">
-            {IG_POSTS.map((src, i) => (
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+            {PORTFOLIO.map((src, i) => (
               <div key={i} className="relative aspect-square overflow-hidden group">
                 <Image
                   src={src}
@@ -416,7 +417,7 @@ export default function LandingPage() {
                 title: "Ink",
                 description:
                   "The session. Clean studio, expert hands, art that lasts a lifetime.",
-                image: TATTOOED_ARM,
+                image: COIL,
               },
             ].map((p) => (
               <div key={p.step} className="relative">
