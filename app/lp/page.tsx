@@ -311,67 +311,69 @@ export default function LandingPage() {
             </p>
           </div>
 
-          {/* Featured + style grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-            {/* Featured large piece — spans 2 rows on desktop */}
-            <div className="relative col-span-2 md:col-span-1 md:row-span-2 aspect-[4/3] md:aspect-auto overflow-hidden group min-h-[200px]">
+          {/* Featured + style grid — flex layout avoids row-span issues */}
+          <div className="flex flex-col md:flex-row gap-3">
+            {/* Featured large piece */}
+            <div className="relative w-full md:w-1/3 aspect-[4/5] md:aspect-auto overflow-hidden group min-h-[320px]">
               <Image
                 src={TATTOOED_ARM}
                 alt="Custom tattoo artwork — Monty Ink"
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                className="object-contain bg-[#0D1020] transition-transform duration-700 group-hover:scale-105"
                 priority
               />
               <div
                 className="absolute inset-0 pointer-events-none"
-                style={{ background: "linear-gradient(to top, rgba(10,10,15,0.7) 0%, transparent 50%)" }}
+                style={{ background: "linear-gradient(to top, rgba(10,10,15,0.8) 0%, transparent 40%)" }}
               />
               <div className="absolute bottom-4 left-4">
                 <span
                   className="text-xs tracking-[0.2em] uppercase text-[#2E7BFF]"
                   style={{ fontFamily: "var(--font-inter)" }}
                 >
-                  Custom Realism
+                  Custom Artwork
                 </span>
               </div>
             </div>
 
-            {/* Style cards */}
-            {styles.map((style, i) => (
-              <div
-                key={style.label}
-                className="relative aspect-square overflow-hidden group flex flex-col items-center justify-center"
-                style={{
-                  background: i % 2 === 0
-                    ? "linear-gradient(135deg, #0D2244 0%, #1A3A6B 100%)"
-                    : "linear-gradient(135deg, #0A0A0F 0%, #0D2244 100%)",
-                  border: "1px solid rgba(46,123,255,0.15)",
-                }}
-              >
+            {/* 2×2 style cards */}
+            <div className="flex-1 grid grid-cols-2 gap-3">
+              {styles.map((style, i) => (
                 <div
-                  className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  style={{ background: "rgba(46,123,255,0.08)" }}
-                />
-                <div className="relative z-10 text-center px-4">
+                  key={style.label}
+                  className="relative overflow-hidden group flex flex-col items-center justify-center min-h-[140px]"
+                  style={{
+                    background: i % 2 === 0
+                      ? "linear-gradient(135deg, #0D2244 0%, #1A3A6B 100%)"
+                      : "linear-gradient(135deg, #111827 0%, #0D2244 100%)",
+                    border: "1px solid rgba(46,123,255,0.2)",
+                  }}
+                >
                   <div
-                    className="text-2xl md:text-3xl font-bold text-[#F5F5F7] mb-2 tracking-tight"
-                    style={{ fontFamily: "var(--font-cinzel)" }}
-                  >
-                    {style.label}
+                    className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{ background: "rgba(46,123,255,0.08)" }}
+                  />
+                  <div className="relative z-10 text-center px-4 py-6">
+                    <div
+                      className="text-xl md:text-2xl font-bold text-[#F5F5F7] mb-2 tracking-tight"
+                      style={{ fontFamily: "var(--font-cinzel)" }}
+                    >
+                      {style.label}
+                    </div>
+                    <div
+                      className="text-[10px] tracking-[0.15em] uppercase text-[#2E7BFF]/80"
+                      style={{ fontFamily: "var(--font-inter)" }}
+                    >
+                      {style.sub}
+                    </div>
                   </div>
                   <div
-                    className="text-[10px] md:text-xs tracking-[0.2em] uppercase text-[#2E7BFF]/70"
-                    style={{ fontFamily: "var(--font-inter)" }}
-                  >
-                    {style.sub}
-                  </div>
+                    className="absolute bottom-0 left-0 right-0 h-px"
+                    style={{ background: "linear-gradient(90deg, transparent, rgba(46,123,255,0.5), transparent)" }}
+                  />
                 </div>
-                <div
-                  className="absolute bottom-0 left-0 right-0 h-0.5"
-                  style={{ background: "linear-gradient(90deg, transparent, rgba(46,123,255,0.4), transparent)" }}
-                />
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
           <div className="text-center mt-8">
