@@ -8,12 +8,12 @@ const INK_BOTTLE = "https://s3.zenova.id/ads/monty-ink/brand/v10/v10-ink-bottle-
 const TATTOOED_ARM = "https://s3.zenova.id/ads/monty-ink/brand/v10/v10-tattooed-arm-art.png";
 
 const IG_POSTS = [
-  "https://s3.zenova.id/ads/monty-ink/brand/v2/ig-post-1.jpg",
-  "https://s3.zenova.id/ads/monty-ink/brand/v2/ig-post-2.jpg",
-  "https://s3.zenova.id/ads/monty-ink/brand/v2/ig-post-3.jpg",
-  "https://s3.zenova.id/ads/monty-ink/brand/v2/ig-post-4.jpg",
-  "https://s3.zenova.id/ads/monty-ink/brand/v2/ig-post-5.jpg",
-  "https://s3.zenova.id/ads/monty-ink/brand/v2/ig-post-6.jpg",
+  "https://s3.zenova.id/ads/monty-ink/brand/v10/v10-tattooed-arm-art.png",
+  "https://s3.zenova.id/ads/monty-ink/brand/v10/v10-needle-rose-bali.png",
+  "https://s3.zenova.id/ads/monty-ink/brand/v10/v10-rotary-machine-mandala.png",
+  "https://s3.zenova.id/ads/monty-ink/brand/v10/v10-ink-bottle-mandala-ring.png",
+  "https://s3.zenova.id/ads/monty-ink/brand/v10/v10-coil-machine-ink-flow.png",
+  "https://s3.zenova.id/ads/monty-ink/brand/v10/v10-tattooed-arm-art.png",
 ];
 
 const WA_LINK = "https://wa.me/6282144441888?text=Hi%20Monty%20Ink%2C%20I%27d%20like%20to%20begin%20my%20piece.";
