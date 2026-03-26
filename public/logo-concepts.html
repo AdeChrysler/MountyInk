@@ -3,21 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Monty Ink - Logo Concepts</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Serif+Display&family=Instrument+Serif&family=Cinzel:wght@400;500;600;700;800;900&family=Inter:wght@200;300;400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<title>Monty Ink — Logo Concepts</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400&family=JetBrains+Mono:wght@300&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     background: #111;
     color: #F5F5F7;
     font-family: 'Inter', sans-serif;
-    padding: 40px;
+    padding: 40px 20px;
   }
   .page-title {
     text-align: center;
-    font-family: 'Inter', sans-serif;
     font-weight: 200;
     font-size: 14px;
     letter-spacing: 6px;
@@ -25,29 +22,27 @@
     color: #666;
     margin-bottom: 60px;
   }
-  .logos-grid {
+  .grid {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    max-width: 1200px;
+    gap: 40px;
+    max-width: 1000px;
     margin: 0 auto;
   }
-  .logo-card {
-    background: #0A0A0F;
-    border: 1px solid #1a1a2e;
-    border-radius: 16px;
-    padding: 60px 40px;
+  .card {
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
-    min-height: 280px;
-    position: relative;
+    align-items: center;
+    gap: 16px;
   }
-  .logo-label {
-    position: absolute;
-    top: 20px;
-    left: 24px;
+  .card img {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid #1a1a2e;
+  }
+  .card-label {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
     font-weight: 300;
@@ -55,250 +50,45 @@
     letter-spacing: 2px;
     text-transform: uppercase;
   }
-  .logo-desc {
-    position: absolute;
-    bottom: 20px;
-    left: 24px;
-    right: 24px;
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
+  .card-desc {
+    font-size: 13px;
     font-weight: 300;
     color: #555;
-    letter-spacing: 0.5px;
-  }
-
-  /* LOGO 1: Playfair Display - Elegant Wordmark */
-  .logo1 .main-text {
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    font-size: 72px;
-    letter-spacing: 18px;
-    text-transform: uppercase;
-    color: #F5F5F7;
-  }
-  .logo1 .sub-text {
-    font-family: 'Inter', sans-serif;
-    font-weight: 200;
-    font-size: 14px;
-    letter-spacing: 12px;
-    text-transform: uppercase;
-    color: #2E7BFF;
-    margin-top: 8px;
-  }
-
-  /* LOGO 2: Cormorant Garamond - Editorial Luxury */
-  .logo2 .main-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 600;
-    font-size: 80px;
-    letter-spacing: 24px;
-    text-transform: uppercase;
-    color: #F5F5F7;
-  }
-  .logo2 .accent-line {
-    width: 60px;
-    height: 1px;
-    background: #2E7BFF;
-    margin: 16px 0;
-  }
-  .logo2 .sub-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 300;
-    font-size: 16px;
-    letter-spacing: 10px;
-    text-transform: uppercase;
-    color: #888;
-  }
-
-  /* LOGO 3: Cinzel Monogram + Wordmark */
-  .logo3 .monogram-container {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-  }
-  .logo3 .monogram {
-    width: 100px;
-    height: 100px;
-    border: 1.5px solid #2E7BFF;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Cinzel', serif;
-    font-weight: 400;
-    font-size: 42px;
-    letter-spacing: 4px;
-    color: #F5F5F7;
-  }
-  .logo3 .wordmark-stack {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-  .logo3 .wordmark-stack .name {
-    font-family: 'Cinzel', serif;
-    font-weight: 700;
-    font-size: 36px;
-    letter-spacing: 14px;
-    text-transform: uppercase;
-    color: #F5F5F7;
-  }
-  .logo3 .wordmark-stack .tagline {
-    font-family: 'Inter', sans-serif;
-    font-weight: 300;
-    font-size: 11px;
-    letter-spacing: 8px;
-    text-transform: uppercase;
-    color: #555;
-  }
-
-  /* LOGO 4: DM Serif Display - Split Weight */
-  .logo4 .main-text {
-    display: flex;
-    align-items: baseline;
-    gap: 20px;
-  }
-  .logo4 .word-monty {
-    font-family: 'DM Serif Display', serif;
-    font-size: 68px;
-    color: #F5F5F7;
-    letter-spacing: 8px;
-    text-transform: uppercase;
-  }
-  .logo4 .word-ink {
-    font-family: 'Inter', sans-serif;
-    font-weight: 200;
-    font-size: 68px;
-    color: #2E7BFF;
-    letter-spacing: 12px;
-    text-transform: uppercase;
-  }
-  .logo4 .divider {
-    width: 1px;
-    height: 50px;
-    background: #333;
-  }
-
-  /* LOGO 5: Instrument Serif - Minimal Emblem */
-  .logo5 .emblem {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    padding: 40px 60px;
-    border: 1px solid #2a2a3e;
-    position: relative;
-  }
-  .logo5 .emblem::before,
-  .logo5 .emblem::after {
-    content: '';
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    border: 1px solid #2E7BFF;
-  }
-  .logo5 .emblem::before {
-    top: -4px;
-    left: -4px;
-    border-right: none;
-    border-bottom: none;
-  }
-  .logo5 .emblem::after {
-    bottom: -4px;
-    right: -4px;
-    border-left: none;
-    border-top: none;
-  }
-  .logo5 .emblem .top-line {
-    font-family: 'Inter', sans-serif;
-    font-weight: 300;
-    font-size: 10px;
-    letter-spacing: 6px;
-    text-transform: uppercase;
-    color: #2E7BFF;
-  }
-  .logo5 .emblem .main-text {
-    font-family: 'Instrument Serif', serif;
-    font-size: 52px;
-    letter-spacing: 16px;
-    text-transform: uppercase;
-    color: #F5F5F7;
-  }
-  .logo5 .emblem .bottom-line {
-    font-family: 'Inter', sans-serif;
-    font-weight: 200;
-    font-size: 10px;
-    letter-spacing: 8px;
-    text-transform: uppercase;
-    color: #666;
-  }
-  .logo5 .emblem .accent-dot {
-    width: 4px;
-    height: 4px;
-    background: #2E7BFF;
-    border-radius: 50%;
+    text-align: center;
+    max-width: 600px;
   }
 </style>
 </head>
 <body>
 
-<div class="page-title">Monty Ink — Logo Concepts</div>
+<div class="page-title">Monty Ink — 5 Logo Concepts (1:1)</div>
 
-<div class="logos-grid">
-
-  <!-- Logo 1: Elegant Serif Wordmark -->
-  <div class="logo-card logo1">
-    <div class="logo-label">Concept 01</div>
-    <div class="main-text">MONTY INK</div>
-    <div class="sub-text">Tattoo Studio &middot; Bali</div>
-    <div class="logo-desc">Playfair Display — Bold serif wordmark with wide tracking. Luxury editorial feel inspired by Tom Ford / Cartier.</div>
+<div class="grid">
+  <div class="card">
+    <span class="card-label">Concept 01 — Playfair Display Wordmark</span>
+    <img src="/monty-ink-logo-1-playfair-wordmark.png" alt="Logo 1">
+    <p class="card-desc">Bold serif wordmark with wide tracking. Inspired by Tom Ford / Cartier.</p>
   </div>
-
-  <!-- Logo 2: Editorial Luxury -->
-  <div class="logo-card logo2">
-    <div class="logo-label">Concept 02</div>
-    <div class="main-text">MONTY INK</div>
-    <div class="accent-line"></div>
-    <div class="sub-text">Tattoo Studio &middot; Bali</div>
-    <div class="logo-desc">Cormorant Garamond — Calligraphic serif with high contrast. Blue accent line. Inspired by Bottega Veneta / fashion editorial.</div>
+  <div class="card">
+    <span class="card-label">Concept 02 — Cormorant Garamond Editorial</span>
+    <img src="/monty-ink-logo-2-cormorant-editorial.png" alt="Logo 2">
+    <p class="card-desc">Calligraphic serif with high contrast + blue accent line. Fashion editorial feel.</p>
   </div>
-
-  <!-- Logo 3: Monogram + Wordmark -->
-  <div class="logo-card logo3">
-    <div class="logo-label">Concept 03</div>
-    <div class="monogram-container">
-      <div class="monogram">MI</div>
-      <div class="wordmark-stack">
-        <div class="name">Monty Ink</div>
-        <div class="tagline">Tattoo Studio &middot; Bali</div>
-      </div>
-    </div>
-    <div class="logo-desc">Cinzel — Roman serif monogram in blue-bordered square + wordmark. Inspired by Chanel / YSL monograms. Works as standalone mark.</div>
+  <div class="card">
+    <span class="card-label">Concept 03 — Cinzel Monogram + Wordmark</span>
+    <img src="/monty-ink-logo-3-cinzel-monogram.png" alt="Logo 3">
+    <p class="card-desc">"MI" monogram in blue-bordered square + wordmark. Inspired by Chanel / YSL.</p>
   </div>
-
-  <!-- Logo 4: Split Weight Contrast -->
-  <div class="logo-card logo4">
-    <div class="logo-label">Concept 04</div>
-    <div class="main-text">
-      <span class="word-monty">Monty</span>
-      <div class="divider"></div>
-      <span class="word-ink">Ink</span>
-    </div>
-    <div class="logo-desc">DM Serif Display + Inter — Serif/sans-serif contrast. "Monty" in warm serif, "Ink" in thin sans-serif blue. Modern luxury split.</div>
+  <div class="card">
+    <span class="card-label">Concept 04 — DM Serif + Inter Split Weight</span>
+    <img src="/monty-ink-logo-4-dmserif-split.png" alt="Logo 4">
+    <p class="card-desc">Serif "Monty" + thin sans-serif blue "Ink". Modern luxury contrast.</p>
   </div>
-
-  <!-- Logo 5: Minimal Framed Emblem -->
-  <div class="logo-card logo5">
-    <div class="logo-label">Concept 05</div>
-    <div class="emblem">
-      <div class="top-line">Est. 2026</div>
-      <div class="accent-dot"></div>
-      <div class="main-text">Monty Ink</div>
-      <div class="accent-dot"></div>
-      <div class="bottom-line">Tattoo Studio &middot; Bali</div>
-    </div>
-    <div class="logo-desc">Instrument Serif — Minimal emblem with fine-line frame and blue corner accents. Quiet luxury, inspired by Bang & Olufsen / Tiffany.</div>
+  <div class="card">
+    <span class="card-label">Concept 05 — Instrument Serif Minimal Emblem</span>
+    <img src="/monty-ink-logo-5-instrument-emblem.png" alt="Logo 5">
+    <p class="card-desc">Minimal emblem with fine-line frame and blue corner accents. Quiet luxury.</p>
   </div>
-
 </div>
 
 </body>
