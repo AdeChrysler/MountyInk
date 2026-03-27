@@ -40,3 +40,19 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #2E7BFF;
 }
+
+/* Hero entrance animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Scroll-reveal utility (JS controls opacity/transform via inline style) */
+.reveal { will-change: opacity, transform; }
+
+/* Lightbox transition */
+.lightbox-enter { animation: fadeInUp 0.25s ease both; }
