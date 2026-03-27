@@ -12,6 +12,10 @@ const nextConfig: NextConfig = {
         hostname: "s3.zenova.id",
         pathname: "/ads/monty-ink/**",
       },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
     ],
   },
 };

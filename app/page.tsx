@@ -14,15 +14,15 @@ const WA_LINK =
 
 const studioImages = [
   {
-    src: "https://s3.zenova.id/ads/monty-ink/studio/studio-interior.png",
+    src: "https://images.unsplash.com/photo-1524593166156-312f362cada0?w=800&q=80&fit=crop",
     alt: "Monty Ink studio interior",
   },
   {
-    src: "https://s3.zenova.id/ads/monty-ink/studio/equipment.png",
+    src: "https://s3.zenova.id/ads/monty-ink/brand/v10/v10-rotary-machine-mandala.png",
     alt: "Professional tattoo equipment",
   },
   {
-    src: "https://s3.zenova.id/ads/monty-ink/studio/artist-at-work.png",
+    src: "https://images.unsplash.com/photo-1596728325488-58c87691e9af?w=800&q=80&fit=crop",
     alt: "Artist at work",
   },
 ];
@@ -34,7 +34,7 @@ const artists = [
     specialty: "Blackwork · Balinese Traditional · Fine Line",
     experience: "12 years",
     bio: "Born in Ubud, Wayan channels the spiritual energy of Bali into every piece. His blackwork is meditative — each dot placed with intention.",
-    image: "https://s3.zenova.id/ads/monty-ink/artists/wayan-monty.png",
+    image: "https://s3.zenova.id/ads/monty-ink/brand/v10/v10-rotary-machine-mandala.png",
   },
   {
     name: "Made Surya",
@@ -42,7 +42,7 @@ const artists = [
     specialty: "Geometric · Mandala · Neo-Traditional",
     experience: "8 years",
     bio: "Made trained in classical Balinese painting before discovering tattooing. His geometric mandalas carry the precision of sacred architecture.",
-    image: "https://s3.zenova.id/ads/monty-ink/artists/made-surya.png",
+    image: "https://s3.zenova.id/ads/monty-ink/brand/v10/v10-coil-machine-ink-flow.png",
   },
   {
     name: "Ketut Artha",
@@ -50,7 +50,7 @@ const artists = [
     specialty: "Watercolor · Realism · Fine Line",
     experience: "5 years",
     bio: "Ketut approaches tattoo like a watercolorist — soft gradients, living forms, and a delicate touch that makes every fine-line piece breathe.",
-    image: "https://s3.zenova.id/ads/monty-ink/artists/ketut-artha.png",
+    image: "https://s3.zenova.id/ads/monty-ink/brand/v10/v10-ink-bottle-mandala-ring.png",
   },
 ];
 
