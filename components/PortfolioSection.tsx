@@ -3,58 +3,60 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
+const BASE = "https://s3.zenova.id/ads/monty-ink/brand/v10";
+
 const portfolioItems = [
   {
-    src: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800&q=80&fit=crop",
-    style: "Mandala",
-    title: "Sacred Circle",
-    category: "Mandala",
-    featured: true,
-  },
-  {
-    src: "https://images.unsplash.com/photo-1548366086-7f1b76106622?w=800&q=80&fit=crop",
-    style: "Blackwork",
-    title: "Shadow Geometry",
-    category: "Blackwork",
-    featured: true,
-  },
-  {
-    src: "https://images.unsplash.com/photo-1590031905470-a1a1feacbb0b?w=800&q=80&fit=crop",
-    style: "Fine Line",
-    title: "Botanical Whisper",
-    category: "Fine Line",
-    featured: false,
-  },
-  {
-    src: "https://images.unsplash.com/photo-1524593166156-312f362cada0?w=800&q=80&fit=crop",
+    src: `${BASE}/v10-tattooed-arm-art.png`,
     style: "Balinese",
     title: "Barong Legacy",
     category: "Balinese",
+    featured: true,
+  },
+  {
+    src: `${BASE}/v10-needle-rose-bali.png`,
+    style: "Fine Line",
+    title: "Botanical Whisper",
+    category: "Fine Line",
+    featured: true,
+  },
+  {
+    src: `${BASE}/v10-rotary-machine-mandala.png`,
+    style: "Mandala",
+    title: "Sacred Circle",
+    category: "Mandala",
     featured: false,
   },
   {
-    src: "https://images.unsplash.com/photo-1596728325488-58c87691e9af?w=800&q=80&fit=crop",
-    style: "Realism",
-    title: "Living Detail",
-    category: "Realism",
+    src: `${BASE}/v10-coil-machine-ink-flow.png`,
+    style: "Blackwork",
+    title: "Shadow Geometry",
+    category: "Blackwork",
     featured: false,
   },
   {
-    src: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800&q=80&fit=crop&crop=entropy",
+    src: `${BASE}/v10-ink-bottle-mandala-ring.png`,
     style: "Geometric",
     title: "Sacred Form",
     category: "Geometric",
     featured: false,
   },
   {
-    src: "https://images.unsplash.com/photo-1548366086-7f1b76106622?w=800&q=80&fit=crop&crop=entropy",
+    src: `${BASE}/v10-tattooed-arm-art.png`,
+    style: "Realism",
+    title: "Living Detail",
+    category: "Realism",
+    featured: false,
+  },
+  {
+    src: `${BASE}/v10-needle-rose-bali.png`,
     style: "Mandala",
     title: "Infinite Pattern",
     category: "Mandala",
     featured: false,
   },
   {
-    src: "https://images.unsplash.com/photo-1590031905470-a1a1feacbb0b?w=800&q=80&fit=crop&crop=entropy",
+    src: `${BASE}/v10-rotary-machine-mandala.png`,
     style: "Blackwork",
     title: "Dark Architecture",
     category: "Blackwork",
