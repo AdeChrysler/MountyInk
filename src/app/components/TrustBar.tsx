@@ -2,13 +2,13 @@
 
 import { useRef } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
-import { Palette, ShieldCheck, Sparkles, MapPin } from "lucide-react";
+import { Star, ShieldCheck, Sparkles, Award } from "lucide-react";
 
 const highlights = [
-  { icon: Palette, label: "Custom Designs Only" },
-  { icon: ShieldCheck, label: "International Hygiene Standards" },
-  { icon: Sparkles, label: "Premium Certified Inks" },
-  { icon: MapPin, label: "Located in Bali" },
+  { icon: Star, label: "5-Star Experience", accent: true },
+  { icon: ShieldCheck, label: "Sterile & Safe" },
+  { icon: Sparkles, label: "Custom Art Only" },
+  { icon: Award, label: "Premium Certified Inks" },
 ];
 
 export default function TrustBar() {
@@ -28,11 +28,15 @@ export default function TrustBar() {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="flex items-center gap-3 justify-center"
             >
-              <item.icon
-                size={16}
-                className="text-blue-electric shrink-0"
-                strokeWidth={1.5}
-              />
+              {item.accent ? (
+                <div className="flex items-center gap-0.5">
+                  {[1, 2, 3, 4, 5].map((s) => (
+                    <Star key={s} size={11} className="text-blue-electric fill-blue-electric" />
+                  ))}
+                </div>
+              ) : (
+                <item.icon size={16} className="text-blue-electric shrink-0" strokeWidth={1.5} />
+              )}
               <p className="text-text-secondary text-[0.7rem] tracking-[0.08em] uppercase leading-tight">
                 {item.label}
               </p>
