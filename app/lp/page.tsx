@@ -1,10 +1,19 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 
 const LOGO = "https://s3.zenova.id/ads/monty-ink/brand/v10/v10-needle-rose-bali.png";
-const TATTOOED_ARM = "https://s3.zenova.id/ads/monty-ink/brand/v10/v10-tattooed-arm-art.png";
+const LP_HERO = "https://s3.zenova.id/ads/monty-ink/lp-hero/hero-studio.jpg";
+
+const PORTFOLIO = [
+  { label: "Mandala", sub: "Sacred Geometry", img: "https://s3.zenova.id/ads/monty-ink/lp-portfolio/mandala.jpg" },
+  { label: "Fine Line", sub: "Delicate Precision", img: "https://s3.zenova.id/ads/monty-ink/lp-portfolio/fineline.jpg" },
+  { label: "Realism", sub: "Photo-Perfect Detail", img: "https://s3.zenova.id/ads/monty-ink/lp-portfolio/realism.jpg" },
+  { label: "Japanese", sub: "Traditional Irezumi", img: "https://s3.zenova.id/ads/monty-ink/lp-portfolio/japanese.jpg" },
+  { label: "Geometric", sub: "Precise Linework", img: "https://s3.zenova.id/ads/monty-ink/lp-portfolio/geometric.jpg" },
+  { label: "Blackwork", sub: "Bold & Timeless", img: "https://s3.zenova.id/ads/monty-ink/lp-portfolio/blackwork.jpg" },
+];
 
 const WA_LINK = "https://wa.me/6282144441888?text=Hi%20Monty%20Ink%2C%20I%27d%20like%20to%20begin%20my%20piece.";
 
@@ -27,13 +36,12 @@ const reviews = [
     text: "I flew back to Bali specifically for my second piece with Monty Ink. That tells you everything.",
     rating: 5,
   },
-];
-
-const styles = [
-  { label: "Mandala", sub: "Sacred geometry" },
-  { label: "Realism", sub: "Photo-perfect detail" },
-  { label: "Japanese", sub: "Traditional Irezumi" },
-  { label: "Geometric", sub: "Precise linework" },
+  {
+    name: "Lucas B.",
+    country: "🇩🇪 Germany",
+    text: "The consultation was seamless and the final piece exceeded all expectations. True artistry, not just tattooing.",
+    rating: 5,
+  },
 ];
 
 const valueProps = [
@@ -105,11 +113,132 @@ function triggerWALead(utm?: string) {
   );
 }
 
-export default function LandingPage() {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
+// Scroll reveal hook using IntersectionObserver
+function useReveal() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  return { ref, visible };
+}
+
+// Animated number counter hook
+function useCounter(target: number, enabled: boolean) {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    if (!enabled) return;
+    const duration = 1800;
+    const steps = 60;
+    const increment = target / steps;
+    let current = 0;
+    let step = 0;
+    const timer = setInterval(() => {
+      step++;
+      current = Math.min(target, Math.round(increment * step));
+      setCount(current);
+      if (step >= steps) clearInterval(timer);
+    }, duration / steps);
+    return () => clearInterval(timer);
+  }, [target, enabled]);
+  return count;
+}
+
+// Stats with animated counters
+function StatItem({ value, label, numericValue, suffix }: {
+  value: string;
+  label: string;
+  numericValue?: number;
+  suffix?: string;
+}) {
+  const { ref, visible } = useReveal();
+  const count = useCounter(numericValue ?? 0, visible && !!numericValue);
+  const displayValue = numericValue ? `${count}${suffix ?? ""}` : value;
 
   return (
-    <div className="min-h-screen bg-[#0A0A0F] text-[#F5F5F7]" style={{ fontFamily: "var(--font-inter)" }}>
+    <div ref={ref} className={`reveal-item ${visible ? "revealed" : ""}`}>
+      <div
+        className="text-2xl md:text-4xl font-bold text-[#2E7BFF] mb-1.5"
+        style={{ fontFamily: "var(--font-cinzel)", lineHeight: 1.2 }}
+      >
+        {displayValue}
+      </div>
+      <div
+        className="text-[11px] md:text-xs tracking-[0.2em] uppercase text-[#C8D0DC]/50"
+        style={{ fontFamily: "var(--font-inter)" }}
+      >
+        {label}
+      </div>
+    </div>
+  );
+}
+
+// Section divider
+function SectionDivider() {
+  return (
+    <div className="relative h-px mx-auto max-w-5xl px-6">
+      <div style={{ background: "linear-gradient(90deg, transparent, rgba(46,123,255,0.3), transparent)", height: "1px" }} />
+    </div>
+  );
+}
+
+// Ornament decoration
+function Ornament() {
+  return (
+    <div className="flex items-center justify-center gap-3 mb-4">
+      <div className="h-px w-12" style={{ background: "linear-gradient(90deg, transparent, rgba(46,123,255,0.5))" }} />
+      <span className="text-[#2E7BFF]/60 text-xs">◈</span>
+      <div className="h-px w-12" style={{ background: "linear-gradient(90deg, rgba(46,123,255,0.5), transparent)" }} />
+    </div>
+  );
+}
+
+export default function LandingPage() {
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [scrollY, setScrollY] = useState(0);
+  const [headerScrolled, setHeaderScrolled] = useState(false);
+
+  // Parallax scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+      setHeaderScrolled(window.scrollY > 40);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = useCallback(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
+  // Section reveal refs
+  const heroTextRef = useRef<HTMLDivElement>(null);
+  const socialProofRef = useRef<HTMLDivElement>(null);
+  const portfolioRef = useRef<HTMLDivElement>(null);
+  const whyRef = useRef<HTMLDivElement>(null);
+  const processRef = useRef<HTMLDivElement>(null);
+  const faqRef = useRef<HTMLDivElement>(null);
+
+  return (
+    <div
+      className="min-h-screen bg-[#0A0A0F] text-[#F5F5F7] lp-page"
+      style={{ fontFamily: "var(--font-inter)" }}
+    >
 
       {/* Sticky WhatsApp - mobile */}
       <a
@@ -117,8 +246,13 @@ export default function LandingPage() {
         target="_blank"
         rel="noopener noreferrer"
         onClick={() => triggerWALead()}
-        className="fixed bottom-6 right-6 z-50 md:hidden flex items-center gap-2 px-5 py-3 shadow-lg shadow-[#2E7BFF]/40 text-sm font-semibold text-[#F5F5F7] tracking-wide rounded-sm"
-        style={{ background: "linear-gradient(135deg, #1A3A6B, #2E7BFF)", fontFamily: "var(--font-cinzel)" }}
+        className="fixed bottom-6 right-6 z-50 md:hidden flex items-center gap-2 px-5 py-3.5 shadow-lg shadow-[#2E7BFF]/40 text-sm font-semibold text-[#F5F5F7] tracking-wide"
+        style={{
+          background: "linear-gradient(135deg, #1A3A6B, #2E7BFF)",
+          fontFamily: "var(--font-cinzel)",
+          borderRadius: "4px",
+          minHeight: "48px"
+        }}
       >
         <svg className="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
@@ -128,7 +262,15 @@ export default function LandingPage() {
       </a>
 
       {/* Header */}
-      <header className="py-5 px-6 flex items-center justify-between max-w-5xl mx-auto border-b border-[#1A3A6B]/20">
+      <header
+        className="sticky top-0 z-40 py-4 px-6 flex items-center justify-between max-w-5xl mx-auto transition-all duration-300"
+        style={{
+          backdropFilter: headerScrolled ? "blur(12px)" : "none",
+          WebkitBackdropFilter: headerScrolled ? "blur(12px)" : "none",
+          background: headerScrolled ? "rgba(10,10,15,0.8)" : "transparent",
+          borderBottom: headerScrolled ? "1px solid rgba(26,58,107,0.3)" : "1px solid rgba(26,58,107,0.2)",
+        }}
+      >
         <div className="flex items-center gap-3">
           <div className="relative w-8 h-8">
             <Image src={LOGO} alt="Monty Ink" fill className="object-contain" />
@@ -146,7 +288,14 @@ export default function LandingPage() {
           rel="noopener noreferrer"
           onClick={() => triggerWALead()}
           className="hidden md:block px-6 py-2.5 text-xs tracking-[0.2em] uppercase text-[#F5F5F7] transition-all hover:shadow-lg hover:shadow-[#2E7BFF]/30 hover:-translate-y-0.5"
-          style={{ fontFamily: "var(--font-cinzel)", background: "linear-gradient(135deg, #1A3A6B, #2E7BFF)" }}
+          style={{
+            fontFamily: "var(--font-cinzel)",
+            background: "linear-gradient(135deg, #1A3A6B, #2E7BFF)",
+            borderRadius: "3px",
+            minHeight: "48px",
+            display: "inline-flex",
+            alignItems: "center",
+          }}
         >
           Begin Your Piece
         </a>
@@ -154,24 +303,43 @@ export default function LandingPage() {
 
       {/* Hero */}
       <section
-        className="relative overflow-hidden py-20 md:py-32 px-6 min-h-[80vh] flex items-center"
+        className="relative overflow-hidden min-h-[90vh] flex items-center py-20 md:py-32 px-6"
         style={{ background: "linear-gradient(135deg, #0A0A0F 0%, #0D2244 50%, #1A3A6B 100%)" }}
       >
+        {/* Noise texture overlay */}
+        <div className="lp-noise-overlay absolute inset-0 pointer-events-none" />
+
         <div
           className="absolute inset-0 pointer-events-none"
           style={{ background: "radial-gradient(ellipse 80% 60% at 60% 50%, rgba(46,123,255,0.12) 0%, transparent 70%)" }}
         />
+
         <div className="relative z-10 max-w-5xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center">
-          <div>
+          {/* Hero text — staggered entrance */}
+          <div ref={heroTextRef} className="hero-text-enter">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 mb-6 hero-badge"
+              style={{
+                background: "rgba(46,123,255,0.12)",
+                border: "1px solid rgba(46,123,255,0.25)",
+                borderRadius: "20px",
+              }}
+            >
+              <span className="text-[#2E7BFF] text-xs">★</span>
+              <span className="text-xs text-[#C8D0DC]/80 tracking-wide" style={{ fontFamily: "var(--font-inter)" }}>
+                4.9 Rated · 500+ Happy Clients
+              </span>
+            </div>
+
             <p
-              className="text-xs tracking-[0.4em] uppercase text-[#2E7BFF] mb-5"
+              className="text-xs tracking-[0.4em] uppercase text-[#2E7BFF] mb-5 hero-sub"
               style={{ fontFamily: "var(--font-inter)" }}
             >
               Premium Tattoo Studio · Bali
             </p>
             <h1
-              className="text-4xl md:text-6xl font-bold leading-tight text-[#F5F5F7] mb-6"
-              style={{ fontFamily: "var(--font-cinzel)" }}
+              className="text-4xl md:text-6xl lg:text-7xl font-bold text-[#F5F5F7] mb-6 hero-headline"
+              style={{ fontFamily: "var(--font-cinzel)", lineHeight: 1.15 }}
             >
               Your Story.<br />
               <span
@@ -182,8 +350,8 @@ export default function LandingPage() {
               </span>
             </h1>
             <p
-              className="text-[#C8D0DC]/80 text-lg leading-relaxed mb-8 max-w-md"
-              style={{ fontFamily: "var(--font-inter)" }}
+              className="text-[#C8D0DC]/80 text-lg mb-8 max-w-md hero-body"
+              style={{ fontFamily: "var(--font-inter)", lineHeight: 1.7 }}
             >
               Custom tattoos only. No templates, no rush. Just exceptional art on skin,
               created in Bali by artists who have spent their lives mastering this craft.
@@ -193,81 +361,102 @@ export default function LandingPage() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => triggerWALead()}
-              className="inline-block px-10 py-4 text-sm tracking-[0.2em] uppercase font-medium text-[#F5F5F7] transition-all duration-300 hover:shadow-xl hover:shadow-[#2E7BFF]/30 hover:-translate-y-0.5"
-              style={{ fontFamily: "var(--font-cinzel)", background: "linear-gradient(135deg, #1A3A6B, #2E7BFF)" }}
+              className="inline-block px-10 py-4 text-sm tracking-[0.2em] uppercase font-medium text-[#F5F5F7] transition-all duration-300 hover:shadow-xl hover:shadow-[#2E7BFF]/30 hover:-translate-y-0.5 hero-cta"
+              style={{
+                fontFamily: "var(--font-cinzel)",
+                background: "linear-gradient(135deg, #1A3A6B, #2E7BFF)",
+                borderRadius: "3px",
+                minHeight: "48px",
+                display: "inline-flex",
+                alignItems: "center",
+              }}
             >
               Begin Your Piece — Free Consult
             </a>
             <p
-              className="text-xs text-[#C8D0DC]/40 mt-3"
+              className="text-xs text-[#C8D0DC]/40 mt-3 hero-cta"
               style={{ fontFamily: "var(--font-inter)" }}
             >
               No commitment required. We&apos;ll discuss your vision first.
             </p>
           </div>
 
-          <div className="relative aspect-[3/4] max-w-sm mx-auto w-full">
-            <Image
-              src={TATTOOED_ARM}
-              alt="Monty Ink tattoo art"
-              fill
-              className="object-cover"
-              priority
-            />
+          {/* Hero image with parallax */}
+          <div
+            className="relative aspect-[3/4] max-w-sm mx-auto w-full overflow-hidden hero-image-wrap"
+            style={{ borderRadius: "6px" }}
+          >
             <div
-              className="absolute inset-0 pointer-events-none"
+              className="absolute inset-0 w-full"
+              style={{
+                transform: `translateY(${scrollY * 0.12}px)`,
+                transition: "transform 0.05s linear",
+                height: "115%",
+                top: "-7.5%",
+              }}
+            >
+              <Image
+                src={LP_HERO}
+                alt="Monty Ink tattoo studio — artist at work"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+            <div
+              className="absolute inset-0 pointer-events-none z-10"
               style={{ background: "linear-gradient(to bottom, transparent 60%, #0A0A0F 100%)" }}
             />
           </div>
         </div>
       </section>
 
+      <SectionDivider />
+
       {/* Social Proof */}
-      <section className="py-16 px-6 border-y border-[#1A3A6B]/30">
+      <section ref={socialProofRef} className="py-24 md:py-32 px-6">
         <div className="max-w-5xl mx-auto">
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-4 md:gap-8 text-center mb-14">
-            {[
-              { value: "500+", label: "Happy Clients" },
-              { value: "★ 4.9", label: "Average Rating" },
-              { value: "12+", label: "Years in Bali" },
-            ].map((s) => (
-              <div key={s.label}>
-                <div
-                  className="text-2xl md:text-4xl font-bold text-[#2E7BFF] mb-1.5"
-                  style={{ fontFamily: "var(--font-cinzel)" }}
-                >
-                  {s.value}
-                </div>
-                <div
-                  className="text-[10px] md:text-xs tracking-[0.2em] uppercase text-[#C8D0DC]/50"
-                  style={{ fontFamily: "var(--font-inter)" }}
-                >
-                  {s.label}
-                </div>
-              </div>
-            ))}
+          <div className="grid grid-cols-3 gap-4 md:gap-8 text-center mb-16">
+            <StatItem value="500+" label="Happy Clients" numericValue={500} suffix="+" />
+            <StatItem value="★ 4.9" label="Average Rating" />
+            <StatItem value="12+" label="Years in Bali" numericValue={12} suffix="+" />
           </div>
 
           {/* Reviews */}
-          <div className="grid md:grid-cols-3 gap-5">
-            {reviews.map((r) => (
+          <div className="lp-review-container">
+            {reviews.map((r, idx) => (
               <div
                 key={r.name}
-                className="p-6 border border-[#1A3A6B]/40 bg-[#0D0D12] flex flex-col gap-4"
+                className="lp-review-card review-stagger"
+                style={{
+                  background: "#0D0D12",
+                  border: "1px solid rgba(26,58,107,0.4)",
+                  borderRadius: "6px",
+                  boxShadow: "inset 0 1px 0 rgba(46,123,255,0.1), 0 4px 20px rgba(0,0,0,0.3)",
+                  animationDelay: `${idx * 120}ms`,
+                }}
               >
-                <div className="flex gap-1">
+                {/* Quotation mark decoration */}
+                <div
+                  className="text-4xl leading-none text-[#2E7BFF]/15 font-serif mb-2"
+                  style={{ fontFamily: "Georgia, serif" }}
+                  aria-hidden="true"
+                >
+                  &ldquo;
+                </div>
+                <div className="flex gap-1 mb-3">
                   {Array.from({ length: r.rating }).map((_, i) => (
                     <span key={i} className="text-[#2E7BFF] text-sm">★</span>
                   ))}
                 </div>
                 <p
-                  className="text-[#C8D0DC]/80 text-sm leading-relaxed italic flex-1"
-                  style={{ fontFamily: "var(--font-inter)" }}
+                  className="text-[#C8D0DC]/80 text-sm flex-1 italic"
+                  style={{ fontFamily: "var(--font-inter)", lineHeight: 1.7 }}
                 >
-                  &ldquo;{r.text}&rdquo;
+                  {r.text}
                 </p>
-                <div className="border-t border-[#1A3A6B]/30 pt-4">
+                <div className="border-t border-[#1A3A6B]/30 pt-4 mt-4">
                   <div
                     className="text-sm font-semibold text-[#F5F5F7]"
                     style={{ fontFamily: "var(--font-cinzel)" }}
@@ -287,10 +476,13 @@ export default function LandingPage() {
         </div>
       </section>
 
+      <SectionDivider />
+
       {/* Portfolio */}
-      <section className="py-20 px-6 bg-[#0D0D12]">
+      <section ref={portfolioRef} className="py-24 md:py-32 px-6 bg-[#0D0D12]">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-10">
+          <div className="text-center mb-12 lp-section-header">
+            <Ornament />
             <p
               className="text-xs tracking-[0.4em] uppercase text-[#2E7BFF] mb-3"
               style={{ fontFamily: "var(--font-inter)" }}
@@ -299,91 +491,72 @@ export default function LandingPage() {
             </p>
             <h2
               className="text-3xl md:text-4xl font-bold text-[#F5F5F7]"
-              style={{ fontFamily: "var(--font-cinzel)" }}
+              style={{ fontFamily: "var(--font-cinzel)", lineHeight: 1.2 }}
             >
               The Portfolio
             </h2>
             <p
               className="text-[#C8D0DC]/50 text-sm mt-3"
-              style={{ fontFamily: "var(--font-inter)" }}
+              style={{ fontFamily: "var(--font-inter)", lineHeight: 1.7 }}
             >
               Every piece is custom — designed exclusively for one client.
             </p>
           </div>
 
-          {/* Featured + style grid — flex layout avoids row-span issues */}
-          <div className="flex flex-col md:flex-row gap-3">
-            {/* Featured large piece */}
-            <div className="relative w-full md:w-1/3 aspect-[4/5] md:aspect-auto overflow-hidden group min-h-[320px]">
-              <Image
-                src={TATTOOED_ARM}
-                alt="Custom tattoo artwork — Monty Ink"
-                fill
-                className="object-contain bg-[#0D1020] transition-transform duration-700 group-hover:scale-105"
-                priority
-              />
+          {/* 6-image portfolio grid */}
+          <div className="lp-portfolio-grid">
+            {PORTFOLIO.map((item, idx) => (
               <div
-                className="absolute inset-0 pointer-events-none"
-                style={{ background: "linear-gradient(to top, rgba(10,10,15,0.8) 0%, transparent 40%)" }}
-              />
-              <div className="absolute bottom-4 left-4">
-                <span
-                  className="text-xs tracking-[0.2em] uppercase text-[#2E7BFF]"
-                  style={{ fontFamily: "var(--font-inter)" }}
-                >
-                  Custom Artwork
-                </span>
-              </div>
-            </div>
-
-            {/* 2×2 style cards */}
-            <div className="flex-1 grid grid-cols-2 gap-3">
-              {styles.map((style, i) => (
-                <div
-                  key={style.label}
-                  className="relative overflow-hidden group flex flex-col items-center justify-center min-h-[140px]"
-                  style={{
-                    background: i % 2 === 0
-                      ? "linear-gradient(135deg, #0D2244 0%, #1A3A6B 100%)"
-                      : "linear-gradient(135deg, #111827 0%, #0D2244 100%)",
-                    border: "1px solid rgba(46,123,255,0.2)",
-                  }}
-                >
-                  <div
-                    className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    style={{ background: "rgba(46,123,255,0.08)" }}
+                key={item.label}
+                className="lp-portfolio-card portfolio-stagger group"
+                style={{
+                  animationDelay: `${idx * 80}ms`,
+                  borderRadius: "5px",
+                  overflow: "hidden",
+                  border: "1px solid rgba(46,123,255,0.15)",
+                  boxShadow: "0 4px 20px rgba(0,0,0,0.4)",
+                }}
+              >
+                <div className="relative aspect-[3/4] overflow-hidden">
+                  <Image
+                    src={item.img}
+                    alt={`${item.label} tattoo — Monty Ink`}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
-                  <div className="relative z-10 text-center px-4 py-6">
+                  <div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{ background: "linear-gradient(to top, rgba(10,10,15,0.9) 0%, rgba(10,10,15,0.2) 60%, transparent 100%)" }}
+                  />
+                  {/* Label overlay */}
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
                     <div
-                      className="text-xl md:text-2xl font-bold text-[#F5F5F7] mb-2 tracking-tight"
-                      style={{ fontFamily: "var(--font-cinzel)" }}
+                      className="text-base font-bold text-[#F5F5F7] tracking-wide"
+                      style={{ fontFamily: "var(--font-cinzel)", lineHeight: 1.2 }}
                     >
-                      {style.label}
+                      {item.label}
                     </div>
                     <div
-                      className="text-[10px] tracking-[0.15em] uppercase text-[#2E7BFF]/80"
+                      className="text-[10px] tracking-[0.15em] uppercase text-[#2E7BFF]/90 mt-0.5"
                       style={{ fontFamily: "var(--font-inter)" }}
                     >
-                      {style.sub}
+                      {item.sub}
                     </div>
                   </div>
-                  <div
-                    className="absolute bottom-0 left-0 right-0 h-px"
-                    style={{ background: "linear-gradient(90deg, transparent, rgba(46,123,255,0.5), transparent)" }}
-                  />
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
 
-          <div className="text-center mt-8">
+          <div className="text-center mt-10">
             <a
               href={WA_LINK}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => triggerWALead("portfolio-cta")}
-              className="inline-block px-8 py-3 text-xs tracking-[0.2em] uppercase text-[#2E7BFF] border border-[#2E7BFF]/40 hover:border-[#2E7BFF] hover:bg-[#2E7BFF]/10 transition-all"
-              style={{ fontFamily: "var(--font-cinzel)" }}
+              className="inline-block px-8 py-3.5 text-xs tracking-[0.2em] uppercase text-[#2E7BFF] border border-[#2E7BFF]/40 hover:border-[#2E7BFF] hover:bg-[#2E7BFF]/10 transition-all"
+              style={{ fontFamily: "var(--font-cinzel)", borderRadius: "3px", minHeight: "48px", display: "inline-flex", alignItems: "center" }}
             >
               Discuss Your Idea →
             </a>
@@ -391,10 +564,13 @@ export default function LandingPage() {
         </div>
       </section>
 
+      <SectionDivider />
+
       {/* Why Monty Ink */}
-      <section className="py-20 px-6">
+      <section ref={whyRef} className="py-24 md:py-32 px-6">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-14 lp-section-header">
+            <Ornament />
             <p
               className="text-xs tracking-[0.4em] uppercase text-[#2E7BFF] mb-3"
               style={{ fontFamily: "var(--font-inter)" }}
@@ -403,7 +579,7 @@ export default function LandingPage() {
             </p>
             <h2
               className="text-3xl md:text-4xl font-bold text-[#F5F5F7]"
-              style={{ fontFamily: "var(--font-cinzel)" }}
+              style={{ fontFamily: "var(--font-cinzel)", lineHeight: 1.2 }}
             >
               Why Monty Ink
             </h2>
@@ -413,7 +589,11 @@ export default function LandingPage() {
             {valueProps.map((v) => (
               <div
                 key={v.title}
-                className="flex gap-5 p-6 border border-[#1A3A6B]/40 bg-[#0D0D12] hover:border-[#2E7BFF]/40 transition-colors"
+                className="flex gap-5 p-7 border border-[#1A3A6B]/40 bg-[#0D0D12] hover:border-[#2E7BFF]/40 transition-colors lp-value-card"
+                style={{
+                  borderRadius: "6px",
+                  boxShadow: "inset 0 1px 0 rgba(46,123,255,0.08), 0 4px 20px rgba(0,0,0,0.25)",
+                }}
               >
                 <div
                   className="text-[#2E7BFF] text-xl shrink-0 mt-0.5 w-6 text-center"
@@ -424,13 +604,13 @@ export default function LandingPage() {
                 <div>
                   <h3
                     className="text-sm font-semibold text-[#F5F5F7] mb-2 tracking-wide"
-                    style={{ fontFamily: "var(--font-cinzel)" }}
+                    style={{ fontFamily: "var(--font-cinzel)", lineHeight: 1.2 }}
                   >
                     {v.title}
                   </h3>
                   <p
-                    className="text-sm text-[#C8D0DC]/60 leading-relaxed"
-                    style={{ fontFamily: "var(--font-inter)" }}
+                    className="text-sm text-[#C8D0DC]/60"
+                    style={{ fontFamily: "var(--font-inter)", lineHeight: 1.7 }}
                   >
                     {v.description}
                   </p>
@@ -441,10 +621,13 @@ export default function LandingPage() {
         </div>
       </section>
 
+      <SectionDivider />
+
       {/* Process */}
-      <section className="py-20 px-6 bg-[#0D0D12]">
+      <section ref={processRef} className="py-24 md:py-32 px-6 bg-[#0D0D12]">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-14">
+          <div className="text-center mb-16 lp-section-header">
+            <Ornament />
             <p
               className="text-xs tracking-[0.4em] uppercase text-[#2E7BFF] mb-3"
               style={{ fontFamily: "var(--font-inter)" }}
@@ -453,41 +636,33 @@ export default function LandingPage() {
             </p>
             <h2
               className="text-3xl md:text-4xl font-bold text-[#F5F5F7]"
-              style={{ fontFamily: "var(--font-cinzel)" }}
+              style={{ fontFamily: "var(--font-cinzel)", lineHeight: 1.2 }}
             >
               3 Steps to Your Piece
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-px bg-[#1A3A6B]/20">
+          {/* Desktop: horizontal with connector line */}
+          <div className="hidden md:grid md:grid-cols-3 gap-px bg-[#1A3A6B]/20 rounded-md overflow-hidden relative">
+            {/* Connecting line */}
+            <div
+              className="absolute top-10 left-[calc(33.33%-0px)] right-[calc(33.33%-0px)] h-px z-20 pointer-events-none"
+              style={{ background: "linear-gradient(90deg, transparent 16%, rgba(46,123,255,0.4) 33%, rgba(46,123,255,0.4) 67%, transparent 84%)" }}
+            />
             {[
-              {
-                step: "01",
-                title: "Consult",
-                description: "Message us on WhatsApp. We discuss your idea, placement, style, and size. No commitment — just conversation.",
-                icon: "◎",
-              },
-              {
-                step: "02",
-                title: "Design",
-                description: "Your artist drafts a custom design exclusively for you. We share it, refine together, perfect it.",
-                icon: "◈",
-              },
-              {
-                step: "03",
-                title: "Ink",
-                description: "The session. Clean studio, expert hands, music of your choice. Art that lasts a lifetime.",
-                icon: "✦",
-              },
+              { step: "01", title: "Consult", description: "Message us on WhatsApp. We discuss your idea, placement, style, and size. No commitment — just conversation.", icon: "◎" },
+              { step: "02", title: "Design", description: "Your artist drafts a custom design exclusively for you. We share it, refine together, perfect it.", icon: "◈" },
+              { step: "03", title: "Ink", description: "The session. Clean studio, expert hands, music of your choice. Art that lasts a lifetime.", icon: "✦" },
             ].map((p, i) => (
               <div
                 key={p.step}
-                className="relative p-8 bg-[#0D0D12] flex flex-col gap-4"
+                className="relative p-8 bg-[#0D0D12] flex flex-col gap-4 process-step"
+                style={{ animationDelay: `${i * 150}ms` }}
               >
                 <div className="flex items-center gap-3 mb-2">
                   <span
-                    className="text-3xl font-bold text-[#2E7BFF]/20 leading-none"
-                    style={{ fontFamily: "var(--font-cinzel)" }}
+                    className="text-3xl font-bold leading-none"
+                    style={{ fontFamily: "var(--font-cinzel)", color: "rgba(46,123,255,0.2)" }}
                   >
                     {p.step}
                   </span>
@@ -495,21 +670,65 @@ export default function LandingPage() {
                 </div>
                 <h3
                   className="text-xl font-bold text-[#F5F5F7]"
-                  style={{ fontFamily: "var(--font-cinzel)" }}
+                  style={{ fontFamily: "var(--font-cinzel)", lineHeight: 1.2 }}
                 >
                   {p.title}
                 </h3>
                 <p
-                  className="text-sm text-[#C8D0DC]/60 leading-relaxed"
-                  style={{ fontFamily: "var(--font-inter)" }}
+                  className="text-sm text-[#C8D0DC]/60"
+                  style={{ fontFamily: "var(--font-inter)", lineHeight: 1.7 }}
                 >
                   {p.description}
                 </p>
-                {i < 2 && (
-                  <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-10">
-                    <span className="text-[#2E7BFF]/30 text-xl">→</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Mobile: vertical timeline */}
+          <div className="md:hidden space-y-0 relative">
+            {/* Vertical line */}
+            <div
+              className="absolute left-5 top-5 bottom-5 w-px"
+              style={{ background: "linear-gradient(to bottom, rgba(46,123,255,0.5), rgba(46,123,255,0.1))" }}
+            />
+            {[
+              { step: "01", title: "Consult", description: "Message us on WhatsApp. Discuss your idea, placement, style, and size.", icon: "◎" },
+              { step: "02", title: "Design", description: "Your artist drafts a custom design exclusively for you. Refine together.", icon: "◈" },
+              { step: "03", title: "Ink", description: "The session. Clean studio, expert hands. Art that lasts a lifetime.", icon: "✦" },
+            ].map((p, i) => (
+              <div key={p.step} className="flex gap-6 pl-0 pb-10 last:pb-0 relative">
+                <div
+                  className="shrink-0 w-10 h-10 flex items-center justify-center z-10"
+                  style={{
+                    background: "#0A0A0F",
+                    border: "1px solid rgba(46,123,255,0.4)",
+                    borderRadius: "50%",
+                  }}
+                >
+                  <span className="text-[#2E7BFF] text-sm">{p.icon}</span>
+                </div>
+                <div className="pt-1.5">
+                  <div className="flex items-baseline gap-2 mb-2">
+                    <span
+                      className="text-xs text-[#2E7BFF]/40 font-bold"
+                      style={{ fontFamily: "var(--font-cinzel)" }}
+                    >
+                      {p.step}
+                    </span>
+                    <h3
+                      className="text-lg font-bold text-[#F5F5F7]"
+                      style={{ fontFamily: "var(--font-cinzel)", lineHeight: 1.2 }}
+                    >
+                      {p.title}
+                    </h3>
                   </div>
-                )}
+                  <p
+                    className="text-sm text-[#C8D0DC]/60"
+                    style={{ fontFamily: "var(--font-inter)", lineHeight: 1.7 }}
+                  >
+                    {p.description}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
@@ -521,6 +740,7 @@ export default function LandingPage() {
         className="py-28 px-6 relative overflow-hidden"
         style={{ background: "linear-gradient(135deg, #0A0A0F 0%, #0D2244 50%, #1A3A6B 100%)" }}
       >
+        <div className="lp-noise-overlay absolute inset-0 pointer-events-none" />
         <div
           className="absolute inset-0 pointer-events-none"
           style={{ background: "radial-gradient(ellipse 70% 70% at 50% 50%, rgba(46,123,255,0.12) 0%, transparent 70%)" }}
@@ -533,13 +753,13 @@ export default function LandingPage() {
           </div>
           <h2
             className="text-3xl md:text-5xl font-bold text-[#F5F5F7] mb-5"
-            style={{ fontFamily: "var(--font-cinzel)" }}
+            style={{ fontFamily: "var(--font-cinzel)", lineHeight: 1.2 }}
           >
             Ready to Wear Your Story?
           </h2>
           <p
-            className="text-[#C8D0DC]/70 mb-10 leading-relaxed max-w-lg mx-auto"
-            style={{ fontFamily: "var(--font-inter)" }}
+            className="text-[#C8D0DC]/70 mb-10 max-w-lg mx-auto"
+            style={{ fontFamily: "var(--font-inter)", lineHeight: 1.7 }}
           >
             Message us now — tell us your idea and we&apos;ll get back to you within a few hours.
             Consultation is always free.
@@ -551,7 +771,12 @@ export default function LandingPage() {
               rel="noopener noreferrer"
               onClick={() => triggerWALead("lp-bottom-cta")}
               className="inline-flex items-center gap-2 px-12 py-5 text-sm tracking-[0.2em] uppercase font-medium text-[#F5F5F7] transition-all duration-300 hover:shadow-xl hover:shadow-[#2E7BFF]/30 hover:-translate-y-0.5"
-              style={{ fontFamily: "var(--font-cinzel)", background: "linear-gradient(135deg, #1A3A6B, #2E7BFF)" }}
+              style={{
+                fontFamily: "var(--font-cinzel)",
+                background: "linear-gradient(135deg, #1A3A6B, #2E7BFF)",
+                borderRadius: "3px",
+                minHeight: "48px",
+              }}
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
@@ -564,7 +789,7 @@ export default function LandingPage() {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block px-8 py-5 text-sm tracking-[0.2em] uppercase text-[#C8D0DC]/60 border border-[#1A3A6B]/40 hover:border-[#2E7BFF]/40 hover:text-[#C8D0DC] transition-all"
-              style={{ fontFamily: "var(--font-cinzel)" }}
+              style={{ fontFamily: "var(--font-cinzel)", borderRadius: "3px", minHeight: "48px" }}
             >
               Follow on Instagram
             </a>
@@ -572,10 +797,13 @@ export default function LandingPage() {
         </div>
       </section>
 
+      <SectionDivider />
+
       {/* FAQ */}
-      <section className="py-20 px-6 bg-[#0D0D12]">
+      <section ref={faqRef} className="py-24 md:py-32 px-6 bg-[#0D0D12]">
         <div className="max-w-2xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-14 lp-section-header">
+            <Ornament />
             <p
               className="text-xs tracking-[0.4em] uppercase text-[#2E7BFF] mb-3"
               style={{ fontFamily: "var(--font-inter)" }}
@@ -584,7 +812,7 @@ export default function LandingPage() {
             </p>
             <h2
               className="text-3xl md:text-4xl font-bold text-[#F5F5F7]"
-              style={{ fontFamily: "var(--font-cinzel)" }}
+              style={{ fontFamily: "var(--font-cinzel)", lineHeight: 1.2 }}
             >
               FAQ
             </h2>
@@ -594,17 +822,32 @@ export default function LandingPage() {
             {faqs.map((f, i) => (
               <div
                 key={i}
-                className="border border-[#1A3A6B]/40 overflow-hidden"
+                className="border border-[#1A3A6B]/40 overflow-hidden transition-all duration-300"
+                style={{
+                  borderRadius: "5px",
+                  borderLeftColor: openFaq === i ? "rgba(46,123,255,0.6)" : undefined,
+                  borderLeftWidth: openFaq === i ? "2px" : "1px",
+                  boxShadow: openFaq === i ? "inset 0 1px 0 rgba(46,123,255,0.08)" : undefined,
+                }}
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
                   className="w-full text-left px-6 py-5 flex items-start justify-between gap-4 hover:bg-[#1A3A6B]/10 transition-colors"
+                  style={{ minHeight: "48px" }}
                 >
-                  <span
-                    className="text-sm font-medium text-[#F5F5F7] leading-relaxed"
-                    style={{ fontFamily: "var(--font-inter)" }}
-                  >
-                    {f.q}
+                  <span className="flex items-start gap-3">
+                    <span
+                      className="text-xs text-[#2E7BFF]/50 font-bold mt-0.5 shrink-0"
+                      style={{ fontFamily: "var(--font-cinzel)" }}
+                    >
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span
+                      className="text-sm font-medium text-[#F5F5F7]"
+                      style={{ fontFamily: "var(--font-inter)", lineHeight: 1.6 }}
+                    >
+                      {f.q}
+                    </span>
                   </span>
                   <span
                     className={`text-[#2E7BFF] text-xl shrink-0 leading-none transition-transform duration-300 ${openFaq === i ? "rotate-45" : ""}`}
@@ -612,49 +855,152 @@ export default function LandingPage() {
                     +
                   </span>
                 </button>
-                {openFaq === i && (
+                <div
+                  className="lp-faq-body"
+                  style={{ maxHeight: openFaq === i ? "400px" : "0" }}
+                >
                   <div className="px-6 pb-5 border-t border-[#1A3A6B]/30">
                     <p
-                      className="text-sm text-[#C8D0DC]/60 leading-relaxed pt-4"
-                      style={{ fontFamily: "var(--font-inter)" }}
+                      className="text-sm text-[#C8D0DC]/60 pt-4"
+                      style={{ fontFamily: "var(--font-inter)", lineHeight: 1.7 }}
                     >
                       {f.a}
                     </p>
                   </div>
-                )}
+                </div>
               </div>
             ))}
+          </div>
+
+          {/* FAQ CTA */}
+          <div className="mt-10 text-center">
+            <p className="text-sm text-[#C8D0DC]/50 mb-4" style={{ fontFamily: "var(--font-inter)" }}>
+              Still have questions?
+            </p>
+            <a
+              href={WA_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => triggerWALead("faq-cta")}
+              className="inline-flex items-center gap-2 px-6 py-3 text-xs tracking-[0.15em] uppercase text-[#2E7BFF] border border-[#2E7BFF]/30 hover:border-[#2E7BFF]/60 hover:bg-[#2E7BFF]/5 transition-all"
+              style={{ fontFamily: "var(--font-cinzel)", borderRadius: "3px", minHeight: "48px" }}
+            >
+              Ask Us on WhatsApp
+            </a>
           </div>
         </div>
       </section>
 
+      <SectionDivider />
+
       {/* Footer */}
-      <footer className="border-t border-[#1A3A6B]/30 py-10 px-6 bg-[#0A0A0F]">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <div className="relative w-6 h-6">
-              <Image src={LOGO} alt="Monty Ink" fill className="object-contain" />
+      <footer className="border-t border-[#1A3A6B]/30 py-12 px-6 bg-[#0A0A0F]">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+            {/* Brand */}
+            <div className="flex flex-col gap-4">
+              <div className="flex items-center gap-3">
+                <div className="relative w-7 h-7">
+                  <Image src={LOGO} alt="Monty Ink" fill className="object-contain" />
+                </div>
+                <span
+                  className="text-sm tracking-[0.25em] uppercase text-[#C8D0DC]/80"
+                  style={{ fontFamily: "var(--font-cinzel)" }}
+                >
+                  Monty Ink
+                </span>
+              </div>
+              <p
+                className="text-xs text-[#C8D0DC]/40"
+                style={{ fontFamily: "var(--font-inter)", lineHeight: 1.6 }}
+              >
+                Premium custom tattoo studio in Seminyak, Bali.
+                Artistry meets permanent expression.
+              </p>
             </div>
-            <span
-              className="text-sm tracking-[0.25em] uppercase text-[#C8D0DC]/60"
-              style={{ fontFamily: "var(--font-cinzel)" }}
-            >
-              Monty Ink
-            </span>
+
+            {/* Contact */}
+            <div className="flex flex-col gap-3">
+              <h4
+                className="text-xs tracking-[0.2em] uppercase text-[#C8D0DC]/50 mb-1"
+                style={{ fontFamily: "var(--font-cinzel)" }}
+              >
+                Contact
+              </h4>
+              <a
+                href="mailto:info@montyink.com"
+                className="text-xs text-[#C8D0DC]/60 hover:text-[#2E7BFF] transition-colors flex items-center gap-2"
+                style={{ fontFamily: "var(--font-inter)" }}
+              >
+                <span className="text-[#2E7BFF]/60 text-xs">✉</span> info@montyink.com
+              </a>
+              <a
+                href="tel:+6282144441888"
+                className="text-xs text-[#C8D0DC]/60 hover:text-[#2E7BFF] transition-colors flex items-center gap-2"
+                style={{ fontFamily: "var(--font-inter)" }}
+              >
+                <span className="text-[#2E7BFF]/60 text-xs">☎</span> +62 821-4444-1888
+              </a>
+              <a
+                href="https://instagram.com/montyinkbali"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-[#C8D0DC]/60 hover:text-[#2E7BFF] transition-colors flex items-center gap-2"
+                style={{ fontFamily: "var(--font-inter)" }}
+              >
+                <span className="text-[#2E7BFF]/60 text-xs">◈</span> @montyinkbali
+              </a>
+            </div>
+
+            {/* Hours */}
+            <div className="flex flex-col gap-3">
+              <h4
+                className="text-xs tracking-[0.2em] uppercase text-[#C8D0DC]/50 mb-1"
+                style={{ fontFamily: "var(--font-cinzel)" }}
+              >
+                Hours & Location
+              </h4>
+              <p
+                className="text-xs text-[#C8D0DC]/60 flex items-center gap-2"
+                style={{ fontFamily: "var(--font-inter)" }}
+              >
+                <span className="text-[#2E7BFF]/60 text-xs">◎</span>
+                Open Daily 10:00 — 20:00
+              </p>
+              <p
+                className="text-xs text-[#C8D0DC]/60 flex items-center gap-2"
+                style={{ fontFamily: "var(--font-inter)" }}
+              >
+                <span className="text-[#2E7BFF]/60 text-xs">◎</span>
+                Seminyak, Bali, Indonesia
+              </p>
+              <a
+                href="/"
+                className="text-xs tracking-[0.1em] uppercase text-[#C8D0DC]/40 hover:text-[#2E7BFF] transition-colors mt-1"
+                style={{ fontFamily: "var(--font-inter)" }}
+              >
+                Company Profile →
+              </a>
+            </div>
           </div>
-          <p
-            className="text-xs text-[#C8D0DC]/30"
-            style={{ fontFamily: "var(--font-inter)" }}
-          >
-            © 2025 Monty Ink · Seminyak, Bali · All rights reserved
-          </p>
-          <a
-            href="/"
-            className="text-xs tracking-[0.15em] uppercase text-[#C8D0DC]/40 hover:text-[#2E7BFF] transition-colors"
-            style={{ fontFamily: "var(--font-inter)" }}
-          >
-            Company Profile →
-          </a>
+
+          {/* Bottom bar */}
+          <div className="border-t border-[#1A3A6B]/20 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p
+              className="text-xs text-[#C8D0DC]/30"
+              style={{ fontFamily: "var(--font-inter)" }}
+            >
+              © 2025 Monty Ink · Seminyak, Bali · All rights reserved
+            </p>
+            <button
+              onClick={scrollToTop}
+              className="text-xs tracking-[0.15em] uppercase text-[#C8D0DC]/40 hover:text-[#2E7BFF] transition-colors flex items-center gap-1.5"
+              style={{ fontFamily: "var(--font-inter)", minHeight: "48px", minWidth: "48px" }}
+              aria-label="Back to top"
+            >
+              ↑ Back to top
+            </button>
+          </div>
         </div>
       </footer>
     </div>
