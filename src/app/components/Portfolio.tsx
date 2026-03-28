@@ -2,21 +2,22 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import ScrollReveal from "./ScrollReveal";
 import SectionHeading from "./SectionHeading";
 
 const filters = ["All", "Realism", "Fine Line", "Balinese", "Black & Grey", "Color"];
 
 const portfolioItems = [
-  { id: 1, category: "Realism", aspect: "aspect-[3/4]", label: "Photorealistic portrait — black & grey" },
-  { id: 2, category: "Fine Line", aspect: "aspect-[4/3]", label: "Botanical fine line — forearm" },
-  { id: 3, category: "Balinese", aspect: "aspect-square", label: "Barong mandala — upper arm" },
-  { id: 4, category: "Black & Grey", aspect: "aspect-[3/4]", label: "Lion chest piece — heavy shading" },
-  { id: 5, category: "Color", aspect: "aspect-[4/3]", label: "Watercolor hummingbird — shoulder" },
-  { id: 6, category: "Balinese", aspect: "aspect-square", label: "Sacred geometry dotwork — hand" },
-  { id: 7, category: "Realism", aspect: "aspect-[3/4]", label: "Nature scene — half sleeve" },
-  { id: 8, category: "Fine Line", aspect: "aspect-[4/3]", label: "Minimalist wave — inner wrist" },
-  { id: 9, category: "Color", aspect: "aspect-square", label: "Japanese koi — half sleeve" },
+  { id: 1, category: "Realism", aspect: "aspect-[3/4]", src: "/images/portfolio-realism-01.png", alt: "Photorealistic portrait tattoo" },
+  { id: 2, category: "Fine Line", aspect: "aspect-[4/3]", src: "/images/portfolio-fineline-01.png", alt: "Botanical fine line tattoo" },
+  { id: 3, category: "Balinese", aspect: "aspect-square", src: "/images/portfolio-balinese-01.png", alt: "Balinese mandala tattoo" },
+  { id: 4, category: "Black & Grey", aspect: "aspect-[3/4]", src: "/images/portfolio-blackgrey-01.png", alt: "Black and grey lion tattoo" },
+  { id: 5, category: "Color", aspect: "aspect-[4/3]", src: "/images/portfolio-color-01.png", alt: "Watercolor hummingbird tattoo" },
+  { id: 6, category: "Balinese", aspect: "aspect-square", src: "/images/portfolio-balinese-02.png", alt: "Sacred geometry dotwork tattoo" },
+  { id: 7, category: "Realism", aspect: "aspect-[3/4]", src: "/images/portfolio-realism-02.png", alt: "Nature scene half sleeve tattoo" },
+  { id: 8, category: "Fine Line", aspect: "aspect-[4/3]", src: "/images/portfolio-fineline-02.png", alt: "Minimalist wave tattoo" },
+  { id: 9, category: "Color", aspect: "aspect-square", src: "/images/portfolio-japanese-01.png", alt: "Japanese koi fish tattoo" },
 ];
 
 export default function Portfolio() {
@@ -68,9 +69,14 @@ export default function Portfolio() {
                 <div
                   className={`group relative overflow-hidden cursor-pointer break-inside-avoid ${item.aspect}`}
                 >
-                  <div className="img-placeholder w-full h-full">
-                    <span>{item.label}</span>
-                  </div>
+                  <Image
+                    src={item.src}
+                    alt={item.alt}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover img-crop group-hover:scale-105 transition-transform duration-700"
+                    loading="lazy"
+                  />
 
                   {/* Hover Overlay */}
                   <div className="absolute inset-0 bg-bg-primary/80 opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-center gap-2">

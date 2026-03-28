@@ -1,5 +1,12 @@
+import Image from "next/image";
 import ScrollReveal from "./ScrollReveal";
 import SectionHeading from "./SectionHeading";
+
+const artists = [
+  { src: "/images/artist-01.png", alt: "Tattoo artist 1" },
+  { src: "/images/artist-02.png", alt: "Tattoo artist 2" },
+  { src: "/images/artist-03.png", alt: "Tattoo artist 3" },
+];
 
 export default function TeamFull() {
   return (
@@ -11,13 +18,19 @@ export default function TeamFull() {
           description="A team of passionate artists dedicated to creating meaningful, wearable art."
         />
 
-        {/* Placeholder — replace with real team data */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {[1, 2, 3, 4].map((i) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {artists.map((artist, i) => (
             <ScrollReveal key={i} delay={i * 0.1}>
               <div className="text-center">
-                <div className="img-placeholder aspect-[3/4] mb-5 max-w-[280px] mx-auto">
-                  <span>Artist {i}</span>
+                <div className="relative aspect-[3/4] mb-5 overflow-hidden">
+                  <Image
+                    src={artist.src}
+                    alt={artist.alt}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover img-crop"
+                    loading="lazy"
+                  />
                 </div>
                 <div className="w-6 h-px bg-blue-electric/30 mx-auto mb-3" />
                 <p className="text-text-muted text-xs tracking-[0.2em] uppercase">

@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import Image from "next/image";
 
 export default function HeroSales() {
   const reduced = useReducedMotion();
@@ -18,8 +19,15 @@ export default function HeroSales() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background layers */}
       <div className="absolute inset-0 bg-gradient-hero" />
-      <div className="absolute inset-0 img-placeholder">
-        <span>Hero — artist tattooing client, moody cinematic lighting</span>
+      <div className="absolute inset-0 overflow-hidden">
+        <Image
+          src="/images/hero-sales.png"
+          alt="Tattoo artist at work in Mounty Ink studio"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover img-crop"
+        />
       </div>
       <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/70 via-bg-primary/40 to-bg-primary" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#05050790_70%)]" />

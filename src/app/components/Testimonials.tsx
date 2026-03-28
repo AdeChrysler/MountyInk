@@ -1,6 +1,13 @@
+import Image from "next/image";
 import ScrollReveal from "./ScrollReveal";
 import SectionHeading from "./SectionHeading";
 import { Star, MessageSquare } from "lucide-react";
+
+const avatars = [
+  "/images/avatar-01.png",
+  "/images/avatar-02.png",
+  "/images/avatar-03.png",
+];
 
 export default function Testimonials() {
   return (
@@ -53,6 +60,20 @@ export default function Testimonials() {
                 <p className="text-text-muted text-sm leading-relaxed flex-grow">
                   {card.description}
                 </p>
+
+                {/* Avatar */}
+                <div className="mt-5 pt-5 border-t border-divider flex justify-center">
+                  <div className="relative w-10 h-10 rounded-full overflow-hidden">
+                    <Image
+                      src={avatars[i]}
+                      alt="Client"
+                      fill
+                      sizes="40px"
+                      className="object-cover img-crop"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
               </div>
             </ScrollReveal>
           ))}

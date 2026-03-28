@@ -176,6 +176,13 @@ body {
   max-width: 200px;
 }
 
+/* ── Watermark Crop — scales image 105% and shifts to hide bottom-right corner ── */
+.img-crop {
+  object-fit: cover;
+  object-position: center top;
+  scale: 1.06;
+}
+
 /* ── Focus Styles (GUIDE §11) ── */
 :focus-visible {
   outline: 2px solid var(--color-blue-electric);

@@ -1,6 +1,16 @@
+import Image from "next/image";
 import ScrollReveal from "./ScrollReveal";
 import { Instagram } from "lucide-react";
 import { siteConfig } from "../lib/config";
+
+const instaImages = [
+  { src: "/images/insta-01.png", alt: "Latest tattoo work" },
+  { src: "/images/insta-02.png", alt: "Studio behind-the-scenes" },
+  { src: "/images/insta-03.png", alt: "Artist at work" },
+  { src: "/images/insta-04.png", alt: "Healed tattoo result" },
+  { src: "/images/insta-05.png", alt: "Bali studio vibes" },
+  { src: "/images/insta-06.png", alt: "Tattoo supplies flat lay" },
+];
 
 export default function SocialProof() {
   return (
@@ -18,23 +28,22 @@ export default function SocialProof() {
           </p>
         </ScrollReveal>
 
-        {/* Instagram grid placeholder */}
+        {/* Instagram grid */}
         <ScrollReveal>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
-            {[
-              "Latest tattoo work",
-              "Studio behind-the-scenes",
-              "Artist at work",
-              "Healed tattoo result",
-              "Bali studio vibes",
-              "Client experience",
-            ].map((label, i) => (
+            {instaImages.map((img, i) => (
               <div
                 key={i}
-                className="group relative img-placeholder aspect-square cursor-pointer"
+                className="group relative aspect-square cursor-pointer overflow-hidden"
               >
-                <span className="!text-[0.5rem]">{label}</span>
-                {/* Hover overlay */}
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 16vw"
+                  className="object-cover img-crop group-hover:scale-110 transition-transform duration-500"
+                  loading="lazy"
+                />
                 <div className="absolute inset-0 bg-blue-electric/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <Instagram size={20} className="text-white" />
                 </div>

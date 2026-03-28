@@ -1,42 +1,37 @@
+import Image from "next/image";
 import ScrollReveal from "./ScrollReveal";
 import SectionHeading from "./SectionHeading";
 
 const styles = [
   {
     name: "Fine Line",
-    description:
-      "Delicate, precise linework with intricate detail. Perfect for minimalist designs and botanical illustrations.",
-    label: "Fine line botanical tattoo in progress",
+    description: "Delicate, precise linework with intricate detail. Perfect for minimalist designs and botanical illustrations.",
+    src: "/images/style-fineline.png",
   },
   {
     name: "Realism",
-    description:
-      "Photorealistic portraits and nature scenes. Breathtaking depth and dimension that captures life on skin.",
-    label: "Photorealistic portrait tattoo close-up",
+    description: "Photorealistic portraits and nature scenes. Breathtaking depth and dimension that captures life on skin.",
+    src: "/images/style-realism.png",
   },
   {
     name: "Balinese Traditional",
-    description:
-      "Sacred Balinese motifs — Barong, lotus, mandala. Cultural artistry meets modern technique.",
-    label: "Balinese ornamental tattoo design",
+    description: "Sacred Balinese motifs — Barong, lotus, mandala. Cultural artistry meets modern technique.",
+    src: "/images/style-balinese.png",
   },
   {
     name: "Black & Grey",
-    description:
-      "Classic shading and contrast. Timeless pieces built on masterful gradients that age beautifully.",
-    label: "Black and grey shading tattoo detail",
+    description: "Classic shading and contrast. Timeless pieces built on masterful gradients that age beautifully.",
+    src: "/images/style-blackgrey.png",
   },
   {
     name: "Watercolor",
-    description:
-      "Vibrant, flowing color work that captures the freedom and spontaneity of paint on canvas.",
-    label: "Colorful watercolor style tattoo",
+    description: "Vibrant, flowing color work that captures the freedom and spontaneity of paint on canvas.",
+    src: "/images/style-watercolor.png",
   },
   {
     name: "Japanese",
-    description:
-      "Bold traditional Irezumi. Dragons, koi, waves — the art of the masters, respected and reimagined.",
-    label: "Japanese traditional koi tattoo",
+    description: "Bold traditional Irezumi. Dragons, koi, waves — the art of the masters, respected and reimagined.",
+    src: "/images/style-japanese.png",
   },
 ];
 
@@ -54,12 +49,17 @@ export default function StylesPricing() {
           {styles.map((style, i) => (
             <ScrollReveal key={style.name} delay={i * 0.08}>
               <div className="group bg-gradient-card border border-divider hover:border-blue-electric/30 transition-all duration-500 h-full flex flex-col overflow-hidden">
-                {/* Image */}
-                <div className="img-placeholder aspect-[16/10]">
-                  <span>{style.label}</span>
+                <div className="relative aspect-[16/10] overflow-hidden">
+                  <Image
+                    src={style.src}
+                    alt={`${style.name} tattoo style`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover img-crop group-hover:scale-105 transition-transform duration-700"
+                    loading="lazy"
+                  />
                 </div>
 
-                {/* Content */}
                 <div className="p-7 flex flex-col flex-grow">
                   <h3 className="font-[family-name:var(--font-heading)] text-2xl text-text-primary mb-2">
                     {style.name}
@@ -67,7 +67,6 @@ export default function StylesPricing() {
                   <p className="text-text-muted text-sm leading-relaxed flex-grow">
                     {style.description}
                   </p>
-
                   <div className="mt-5 pt-5 border-t border-divider">
                     <a
                       href="#booking"

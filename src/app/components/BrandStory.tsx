@@ -1,3 +1,4 @@
+import Image from "next/image";
 import ScrollReveal from "./ScrollReveal";
 
 export default function BrandStory() {
@@ -34,8 +35,15 @@ export default function BrandStory() {
           </ScrollReveal>
 
           <ScrollReveal direction="right">
-            <div className="img-placeholder aspect-[4/5]">
-              <span>Founder portrait — editorial style</span>
+            <div className="relative aspect-[4/5] overflow-hidden">
+              <Image
+                src="/images/story-founder.png"
+                alt="Mounty Ink studio founder"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover img-crop"
+                loading="lazy"
+              />
             </div>
           </ScrollReveal>
         </div>
@@ -43,8 +51,15 @@ export default function BrandStory() {
         {/* Row 2: Philosophy */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mt-24 md:mt-32">
           <ScrollReveal direction="left" className="order-2 lg:order-1">
-            <div className="img-placeholder aspect-[4/3]">
-              <span>Studio interior — luxurious, clean, atmospheric</span>
+            <div className="relative aspect-[4/3] overflow-hidden">
+              <Image
+                src="/images/story-interior.png"
+                alt="Mounty Ink studio interior"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover img-crop"
+                loading="lazy"
+              />
             </div>
           </ScrollReveal>
 
