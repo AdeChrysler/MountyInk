@@ -21,22 +21,21 @@ export default function BrandStory() {
               </div>
               <p className="mt-7 text-text-secondary text-base md:text-lg leading-relaxed">
                 Mounty Ink was born from a simple belief — that getting a tattoo
-                should be as transformative as the art itself. Founded in the heart
-                of Seminyak, we created a space where world-class artistry meets the
-                island&apos;s spiritual energy.
+                should be as transformative as the art itself. We created a space
+                in Bali where world-class artistry meets the island&apos;s
+                spiritual energy.
               </p>
               <p className="mt-5 text-text-muted text-sm md:text-base leading-relaxed">
-                What started as a single-artist studio has grown into Bali&apos;s most
-                sought-after tattoo atelier. We&apos;ve inked travelers from over
-                40 countries, each piece carrying the essence of their Bali
-                journey — a permanent souvenir of paradise.
+                More than a studio, Mounty Ink is a destination for those who
+                seek meaningful art on their skin — a permanent reminder of
+                their journey through paradise.
               </p>
             </div>
           </ScrollReveal>
 
           <ScrollReveal direction="right">
             <div className="img-placeholder aspect-[4/5]">
-              <span>Founder portrait — Monty in his studio, editorial style</span>
+              <span>Founder portrait — editorial style</span>
             </div>
           </ScrollReveal>
         </div>
@@ -45,7 +44,7 @@ export default function BrandStory() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mt-24 md:mt-32">
           <ScrollReveal direction="left" className="order-2 lg:order-1">
             <div className="img-placeholder aspect-[4/3]">
-              <span>Studio interior — luxurious, clean, atmospheric wide shot</span>
+              <span>Studio interior — luxurious, clean, atmospheric</span>
             </div>
           </ScrollReveal>
 
@@ -63,15 +62,14 @@ export default function BrandStory() {
                 <span className="line-slash" />
               </div>
               <p className="mt-7 text-text-secondary text-base md:text-lg leading-relaxed">
-                We don&apos;t do flash off the wall. Every piece at Mounty Ink is a
-                custom collaboration between artist and client — a conversation
-                between your story and our craft.
+                Every piece at Mounty Ink is a custom collaboration between
+                artist and client — a conversation between your story and our
+                craft. No flash off the wall, no rushing.
               </p>
               <p className="mt-5 text-text-muted text-sm md:text-base leading-relaxed">
-                Our studio was designed to feel like a sanctuary. Balinese
+                Our studio is designed to feel like a sanctuary. Balinese
                 architecture, premium equipment, and an atmosphere that puts you
-                at ease from the moment you walk in. This is where precision
-                meets paradise.
+                at ease from the moment you walk in.
               </p>
             </div>
           </ScrollReveal>

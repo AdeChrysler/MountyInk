@@ -2,14 +2,13 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { siteConfig, getWhatsAppUrl } from "../lib/config";
 
 export default function MobileBookingBar() {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => {
-      setShow(window.scrollY > 600);
-    };
+    const onScroll = () => setShow(window.scrollY > 600);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -26,13 +25,13 @@ export default function MobileBookingBar() {
         >
           <div className="bg-bg-primary/95 backdrop-blur-xl border-t border-divider px-4 py-3 flex gap-3">
             <a
-              href="#booking"
+              href={`mailto:${siteConfig.contact.email}`}
               className="flex-1 py-3 bg-blue-electric text-white text-center text-xs font-semibold tracking-[0.12em] uppercase"
             >
-              Book Now
+              Get in Touch
             </a>
             <a
-              href="https://wa.me/6281234567890?text=Hi%20Mounty%20Ink!%20I'd%20like%20to%20book%20a%20session."
+              href={getWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
               className="py-3 px-5 border border-divider text-text-primary text-center text-xs font-semibold tracking-[0.12em] uppercase"

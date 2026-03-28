@@ -6,42 +6,36 @@ const styles = [
     name: "Fine Line",
     description:
       "Delicate, precise linework with intricate detail. Perfect for minimalist designs and botanical illustrations.",
-    startingFrom: "IDR 1.500K",
     label: "Fine line botanical tattoo in progress",
   },
   {
     name: "Realism",
     description:
       "Photorealistic portraits and nature scenes. Breathtaking depth and dimension that captures life on skin.",
-    startingFrom: "IDR 3.000K",
     label: "Photorealistic portrait tattoo close-up",
   },
   {
     name: "Balinese Traditional",
     description:
       "Sacred Balinese motifs — Barong, lotus, mandala. Cultural artistry meets modern technique.",
-    startingFrom: "IDR 2.000K",
     label: "Balinese ornamental tattoo design",
   },
   {
     name: "Black & Grey",
     description:
       "Classic shading and contrast. Timeless pieces built on masterful gradients that age beautifully.",
-    startingFrom: "IDR 2.000K",
     label: "Black and grey shading tattoo detail",
   },
   {
     name: "Watercolor",
     description:
       "Vibrant, flowing color work that captures the freedom and spontaneity of paint on canvas.",
-    startingFrom: "IDR 2.500K",
     label: "Colorful watercolor style tattoo",
   },
   {
     name: "Japanese",
     description:
       "Bold traditional Irezumi. Dragons, koi, waves — the art of the masters, respected and reimagined.",
-    startingFrom: "IDR 3.000K",
     label: "Japanese traditional koi tattoo",
   },
 ];
@@ -52,8 +46,8 @@ export default function StylesPricing() {
       <div className="max-w-7xl mx-auto px-6">
         <SectionHeading
           subtitle="What We Do"
-          title="Styles & Pricing"
-          description="Every style, mastered. Starting prices for consultation — final quotes tailored to your unique design."
+          title="Our Styles"
+          description="Every style, mastered. Contact us for a personalized quote tailored to your unique design."
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -74,20 +68,12 @@ export default function StylesPricing() {
                     {style.description}
                   </p>
 
-                  <div className="mt-5 pt-5 border-t border-divider flex items-end justify-between">
-                    <div>
-                      <p className="text-text-muted text-[0.6rem] tracking-[0.2em] uppercase">
-                        Starting from
-                      </p>
-                      <p className="text-blue-electric font-semibold text-lg mt-0.5">
-                        {style.startingFrom}
-                      </p>
-                    </div>
+                  <div className="mt-5 pt-5 border-t border-divider">
                     <a
                       href="#booking"
                       className="text-[0.7rem] text-blue-electric tracking-[0.1em] uppercase font-medium hover:text-text-primary transition-colors"
                     >
-                      Get Quote &rarr;
+                      Contact for Quote &rarr;
                     </a>
                   </div>
                 </div>

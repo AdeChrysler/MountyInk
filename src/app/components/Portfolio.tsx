@@ -8,15 +8,15 @@ import SectionHeading from "./SectionHeading";
 const filters = ["All", "Realism", "Fine Line", "Balinese", "Black & Grey", "Color"];
 
 const portfolioItems = [
-  { id: 1, category: "Realism", artist: "Monty", aspect: "aspect-[3/4]", label: "Photorealistic portrait — black & grey" },
-  { id: 2, category: "Fine Line", artist: "Ari", aspect: "aspect-[4/3]", label: "Botanical fine line — forearm" },
-  { id: 3, category: "Balinese", artist: "Dewa", aspect: "aspect-square", label: "Barong mandala — upper arm" },
-  { id: 4, category: "Black & Grey", artist: "Monty", aspect: "aspect-[3/4]", label: "Lion chest piece — heavy shading" },
-  { id: 5, category: "Color", artist: "Yuki", aspect: "aspect-[4/3]", label: "Watercolor hummingbird — shoulder" },
-  { id: 6, category: "Balinese", artist: "Dewa", aspect: "aspect-square", label: "Sacred geometry dotwork — hand" },
-  { id: 7, category: "Realism", artist: "Monty", aspect: "aspect-[3/4]", label: "Nature scene — half sleeve" },
-  { id: 8, category: "Fine Line", artist: "Ari", aspect: "aspect-[4/3]", label: "Minimalist wave — inner wrist" },
-  { id: 9, category: "Color", artist: "Yuki", aspect: "aspect-square", label: "Japanese koi — half sleeve" },
+  { id: 1, category: "Realism", aspect: "aspect-[3/4]", label: "Photorealistic portrait — black & grey" },
+  { id: 2, category: "Fine Line", aspect: "aspect-[4/3]", label: "Botanical fine line — forearm" },
+  { id: 3, category: "Balinese", aspect: "aspect-square", label: "Barong mandala — upper arm" },
+  { id: 4, category: "Black & Grey", aspect: "aspect-[3/4]", label: "Lion chest piece — heavy shading" },
+  { id: 5, category: "Color", aspect: "aspect-[4/3]", label: "Watercolor hummingbird — shoulder" },
+  { id: 6, category: "Balinese", aspect: "aspect-square", label: "Sacred geometry dotwork — hand" },
+  { id: 7, category: "Realism", aspect: "aspect-[3/4]", label: "Nature scene — half sleeve" },
+  { id: 8, category: "Fine Line", aspect: "aspect-[4/3]", label: "Minimalist wave — inner wrist" },
+  { id: 9, category: "Color", aspect: "aspect-square", label: "Japanese koi — half sleeve" },
 ];
 
 export default function Portfolio() {
@@ -68,7 +68,6 @@ export default function Portfolio() {
                 <div
                   className={`group relative overflow-hidden cursor-pointer break-inside-avoid ${item.aspect}`}
                 >
-                  {/* Image Placeholder */}
                   <div className="img-placeholder w-full h-full">
                     <span>{item.label}</span>
                   </div>
@@ -78,10 +77,7 @@ export default function Portfolio() {
                     <p className="text-blue-electric text-[0.65rem] tracking-[0.25em] uppercase font-medium">
                       {item.category}
                     </p>
-                    <p className="font-[family-name:var(--font-heading)] text-xl text-text-primary">
-                      by {item.artist}
-                    </p>
-                    <span className="mt-3 w-8 h-px bg-blue-electric" />
+                    <span className="mt-2 w-8 h-px bg-blue-electric" />
                   </div>
                 </div>
               </ScrollReveal>
@@ -89,7 +85,6 @@ export default function Portfolio() {
           </motion.div>
         </AnimatePresence>
 
-        {/* View All CTA */}
         <ScrollReveal className="text-center mt-14">
           <a
             href="#"

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle } from "lucide-react";
+import { getWhatsAppUrl } from "../lib/config";
 
 export default function WhatsAppFloat() {
   const [show, setShow] = useState(false);
@@ -16,7 +17,7 @@ export default function WhatsAppFloat() {
     <AnimatePresence>
       {show && (
         <motion.a
-          href="https://wa.me/6281234567890?text=Hi%20Mounty%20Ink!%20I'd%20like%20to%20book%20a%20tattoo%20session."
+          href={getWhatsAppUrl()}
           target="_blank"
           rel="noopener noreferrer"
           initial={{ opacity: 0, scale: 0.8, y: 20 }}

@@ -9,27 +9,27 @@ import { motion, AnimatePresence } from "framer-motion";
 const faqs = [
   {
     q: "How do I book an appointment?",
-    a: "You can book directly through our website, send us a message on WhatsApp, or DM us on Instagram. We recommend booking at least 1-2 weeks in advance, especially during peak tourist season (June-August, December-January).",
+    a: "You can reach us through WhatsApp, Instagram DM, or email. We recommend booking in advance, especially during Bali's peak tourist season.",
   },
   {
     q: "How much does a tattoo cost?",
-    a: "Pricing depends on size, detail, placement, and style. Small pieces start from IDR 1.500K (~$95 USD). We provide free consultations where we'll give you an accurate quote based on your specific design. No surprises, no hidden fees.",
+    a: "Pricing depends on size, detail, placement, and style. Contact us for a free consultation where we'll discuss your design and provide a personalized quote.",
   },
   {
     q: "Is it safe to get tattooed in Bali?",
-    a: "At Mounty Ink, absolutely. We exceed international health and safety standards. Single-use needles, hospital-grade autoclaved sterilization, premium certified inks, and an immaculately maintained studio. Your safety is as permanent as our ink.",
+    a: "At Mounty Ink, we prioritize your safety. We use single-use needles, sterilized equipment, and premium certified inks. Our studio maintains strict hygiene protocols.",
   },
   {
     q: "How should I prepare for my session?",
-    a: "Stay hydrated, eat a good meal beforehand, avoid alcohol for 24 hours, and get a good night's sleep. Wear comfortable clothing that allows easy access to the tattoo area. Bring reference images if you have them.",
+    a: "Stay hydrated, eat a good meal beforehand, avoid alcohol for 24 hours, and get a good night's sleep. Wear comfortable clothing that allows easy access to the tattoo area.",
   },
   {
     q: "Do you accept walk-ins?",
-    a: "We welcome walk-ins based on availability, but we strongly recommend booking ahead to secure your preferred artist and time slot. Walk-ins are subject to artist availability and may have limited style options.",
+    a: "We welcome walk-ins based on availability, but we recommend booking ahead to secure your preferred artist and time slot.",
   },
   {
     q: "What about aftercare?",
-    a: "We provide a comprehensive aftercare kit and detailed instructions with every tattoo. Our team is available for follow-up questions via WhatsApp. We also offer complimentary touch-ups within the first 3 months.",
+    a: "We provide aftercare instructions with every tattoo and our team is available for follow-up questions. Proper aftercare is essential for the best healing results.",
   },
 ];
 
