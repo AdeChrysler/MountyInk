@@ -263,7 +263,7 @@ export default function LandingPage() {
 
       {/* Header */}
       <header
-        className="sticky top-0 z-40 py-4 px-6 flex items-center justify-between max-w-5xl mx-auto transition-all duration-300"
+        className="sticky top-0 z-40 w-full transition-all duration-300"
         style={{
           backdropFilter: headerScrolled ? "blur(12px)" : "none",
           WebkitBackdropFilter: headerScrolled ? "blur(12px)" : "none",
@@ -271,6 +271,7 @@ export default function LandingPage() {
           borderBottom: headerScrolled ? "1px solid rgba(26,58,107,0.3)" : "1px solid rgba(26,58,107,0.2)",
         }}
       >
+        <div className="py-4 px-6 flex items-center justify-between max-w-5xl mx-auto">
         <div className="flex items-center gap-3">
           <div className="relative w-8 h-8">
             <Image src={LOGO} alt="Monty Ink" fill className="object-contain" />
@@ -299,6 +300,7 @@ export default function LandingPage() {
         >
           Begin Your Piece
         </a>
+        </div>
       </header>
 
       {/* Hero */}
