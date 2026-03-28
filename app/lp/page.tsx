@@ -178,7 +178,7 @@ function StatItem({ value, label, numericValue, suffix }: {
         {displayValue}
       </div>
       <div
-        className="text-[11px] md:text-xs tracking-[0.2em] uppercase text-[#C8D0DC]/50"
+        className="text-[10px] md:text-xs tracking-wide md:tracking-[0.2em] uppercase text-[#C8D0DC]/50"
         style={{ fontFamily: "var(--font-inter)" }}
       >
         {label}
