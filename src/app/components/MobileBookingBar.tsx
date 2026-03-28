@@ -1,0 +1,47 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
+export default function MobileBookingBar() {
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      setShow(window.scrollY > 600);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <AnimatePresence>
+      {show && (
+        <motion.div
+          initial={{ y: 100 }}
+          animate={{ y: 0 }}
+          exit={{ y: 100 }}
+          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+          className="fixed bottom-0 left-0 right-0 z-40 lg:hidden"
+        >
+          <div className="bg-bg-primary/95 backdrop-blur-xl border-t border-divider px-4 py-3 flex gap-3">
+            <a
+              href="#booking"
+              className="flex-1 py-3 bg-blue-electric text-white text-center text-xs font-semibold tracking-[0.12em] uppercase"
+            >
+              Book Now
+            </a>
+            <a
+              href="https://wa.me/6281234567890?text=Hi%20Mounty%20Ink!%20I'd%20like%20to%20book%20a%20session."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="py-3 px-5 border border-divider text-text-primary text-center text-xs font-semibold tracking-[0.12em] uppercase"
+            >
+              WhatsApp
+            </a>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}

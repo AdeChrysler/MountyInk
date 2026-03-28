@@ -1,0 +1,193 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── Brand Colors (SRD §4.1) ── */
+  --color-bg-primary: #050507;
+  --color-bg-secondary: #0A0F1A;
+  --color-bg-card: #111827;
+  --color-bg-elevated: #1E293B;
+
+  --color-blue-deep: #1A3A6B;
+  --color-blue-electric: #2E7BFF;
+  --color-blue-glow: #2E7BFF33;
+  --color-blue-mist: #2E7BFF15;
+
+  --color-text-primary: #F5F5F7;
+  --color-text-secondary: #C8D0DC;
+  --color-text-muted: #8A9BB0;
+  --color-divider: #1E293B;
+
+  /* ── Typography (SRD §4.2) ── */
+  --font-heading: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Inter", system-ui, sans-serif;
+
+  /* ── Animations ── */
+  --animate-fade-up: fade-up 0.8s ease-out forwards;
+  --animate-fade-in: fade-in 0.6s ease-out forwards;
+  --animate-scale-in: scale-in 0.5s ease-out forwards;
+  --animate-slide-right: slide-right 0.8s ease-out forwards;
+  --animate-glow-pulse: glow-pulse 3s ease-in-out infinite;
+}
+
+/* ── Keyframes ── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slide-right {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px #2E7BFF22, 0 0 60px #2E7BFF11; }
+  50% { box-shadow: 0 0 30px #2E7BFF44, 0 0 80px #2E7BFF22; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes line-grow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ── Base ── */
+html {
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+}
+
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: #2E7BFF44;
+  color: var(--color-text-primary);
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--color-bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--color-blue-deep); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-blue-electric); }
+
+/* ── Gradient Utilities ── */
+.text-gradient-blue {
+  background: linear-gradient(135deg, #2E7BFF 0%, #1A3A6B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.bg-gradient-hero {
+  background: radial-gradient(ellipse at 50% 0%, #0A0F1A 0%, #050507 70%);
+}
+
+.bg-gradient-cta {
+  background: linear-gradient(135deg, #0f2847 0%, #1A3A6B 40%, #2E7BFF 100%);
+}
+
+.bg-gradient-card {
+  background: linear-gradient(180deg, #111827 0%, #0A0F1A 100%);
+}
+
+/* ── Glass ── */
+.glass {
+  background: rgba(5, 5, 7, 0.75);
+  backdrop-filter: blur(24px) saturate(1.2);
+  -webkit-backdrop-filter: blur(24px) saturate(1.2);
+  border-bottom: 1px solid rgba(30, 41, 59, 0.4);
+}
+
+/* ── Slash Motif (GUIDE §3) ── */
+.line-slash {
+  width: 48px;
+  height: 1px;
+  background: var(--color-blue-electric);
+  transform: rotate(-45deg);
+  display: inline-block;
+}
+
+/* ── Image Placeholder System ── */
+.img-placeholder {
+  background:
+    linear-gradient(135deg, #0d1321 0%, #111d33 30%, #0f1729 60%, #0d1321 100%);
+  background-size: 200% 200%;
+  animation: shimmer 8s ease-in-out infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.img-placeholder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 40%, #1A3A6B15 0%, transparent 50%),
+    radial-gradient(circle at 70% 60%, #2E7BFF08 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.img-placeholder::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(30, 41, 59, 0.5);
+  pointer-events: none;
+}
+
+.img-placeholder span {
+  position: relative;
+  z-index: 1;
+  color: #4a5a74;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-align: center;
+  padding: 1rem;
+  max-width: 200px;
+}
+
+/* ── Focus Styles (GUIDE §11) ── */
+:focus-visible {
+  outline: 2px solid var(--color-blue-electric);
+  outline-offset: 2px;
+}
+
+/* ── Reduced Motion (GUIDE §11) ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
