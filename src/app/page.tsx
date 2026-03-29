@@ -12,7 +12,6 @@ import FAQ from "./components/FAQ";
 import SocialProof from "./components/SocialProof";
 import Footer from "./components/Footer";
 import WhatsAppFloat from "./components/WhatsAppFloat";
-import MobileBookingBar from "./components/MobileBookingBar";
 
 export default function SalesPage() {
   return (
@@ -33,7 +32,6 @@ export default function SalesPage() {
       </main>
       <Footer />
       <WhatsAppFloat />
-      <MobileBookingBar />
     </>
   );
 }

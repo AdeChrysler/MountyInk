@@ -108,7 +108,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="mt-14 pt-8 border-t border-divider flex flex-col md:flex-row justify-between items-center gap-3">
           <p className="text-text-muted/60 text-xs tracking-[0.15em]">
-            &copy; {new Date().getFullYear()} {siteConfig.brand.name} &middot; Tattoo Studio &middot; Bali
+            &copy; 2026 {siteConfig.brand.name} &middot; Tattoo Studio &middot; Bali
           </p>
           <p className="text-text-muted/30 text-xs tracking-[0.1em]">
             Crafted with precision
