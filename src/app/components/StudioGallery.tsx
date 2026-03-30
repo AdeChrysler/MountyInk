@@ -1,12 +1,23 @@
+import Image from "next/image";
 import ScrollReveal from "./ScrollReveal";
 import SectionHeading from "./SectionHeading";
 
 const studioImages = [
-  { label: "Reception & lounge — dark wood, low lighting, art on walls", className: "col-span-2 row-span-2" },
-  { label: "Tattoo station — adjustable chair, overhead light", className: "col-span-1 row-span-1" },
-  { label: "Sterilization room — autoclave, organized", className: "col-span-1 row-span-1" },
-  { label: "Design consultation — iPad, reference books", className: "col-span-1 row-span-1" },
-  { label: "Exterior — Balinese gate, tropical plants, night", className: "col-span-1 row-span-1" },
+  {
+    src: "/images/studio-reception.png",
+    alt: "Mounty Ink reception lounge — marble floors, leather sofa, art shelves",
+    className: "col-span-2 row-span-2",
+  },
+  {
+    src: "/images/studio-room.png",
+    alt: "Tattoo room — luxury beds, dark blue walls, marble floor",
+    className: "col-span-2 row-span-1",
+  },
+  {
+    src: "/images/studio-exterior.png",
+    alt: "Mounty Ink Bali studio exterior at dusk",
+    className: "col-span-2 row-span-1",
+  },
 ];
 
 export default function StudioGallery() {
@@ -20,13 +31,20 @@ export default function StudioGallery() {
         />
 
         <ScrollReveal>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3 auto-rows-[160px] sm:auto-rows-[200px] md:auto-rows-[220px]">
+          <div className="grid grid-cols-4 gap-2 md:gap-3 auto-rows-[220px] md:auto-rows-[260px]">
             {studioImages.map((img, i) => (
               <div
                 key={i}
-                className={`img-placeholder group cursor-pointer hover:brightness-110 transition-all duration-500 ${img.className}`}
+                className={`relative overflow-hidden group ${img.className}`}
               >
-                <span>{img.label}</span>
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-bg-primary/10 group-hover:bg-transparent transition-colors duration-500" />
               </div>
             ))}
           </div>
