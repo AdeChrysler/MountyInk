@@ -53,8 +53,8 @@ export default function BrandStory() {
           <ScrollReveal direction="left" className="order-2 lg:order-1">
             <div className="relative aspect-[4/3] overflow-hidden">
               <Image
-                src="/images/story-interior.png"
-                alt="Mounty Ink studio interior"
+                src="/images/studio-reception.png"
+                alt="Mounty Ink studio reception — marble floors, leather sofa, brand logo wall"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover img-crop"
