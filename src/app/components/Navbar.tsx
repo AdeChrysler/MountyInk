@@ -80,7 +80,7 @@ export default function Navbar({ variant = "sales" }: NavbarProps) {
               alt="Mounty Ink — Tattoo Studio Bali"
               width={140}
               height={48}
-              className="h-9 md:h-10 w-auto"
+              className="h-12 md:h-14 w-auto"
               priority
             />
           </Link>
