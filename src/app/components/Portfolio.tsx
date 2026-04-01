@@ -10,13 +10,12 @@ import { siteConfig } from "../lib/config";
 const filters = ["All", "Realism", "Japanese", "Balinese", "Black & Grey"];
 
 const portfolioItems = [
-  { id: 1, category: "Japanese", aspect: "aspect-[3/4]", src: "/images/portfolio-japanese-real.jpg", alt: "Japanese dragon koi half-sleeve tattoo in vibrant red and orange" },
-  { id: 2, category: "Realism", aspect: "aspect-[3/4]", src: "/images/portfolio-realism-real.jpg", alt: "Egyptian Bastet cat and scarab realistic forearm tattoo in black and grey" },
-  { id: 3, category: "Black & Grey", aspect: "aspect-[3/4]", src: "/images/portfolio-blackgrey-real.jpg", alt: "Zeus and eagle Greek mythology full sleeve tattoo in black and grey" },
-  { id: 4, category: "Balinese", aspect: "aspect-[3/4]", src: "/images/portfolio-balinese-real.jpg", alt: "Full sleeve tattoo with Balinese Barong mural backdrop" },
-  { id: 5, category: "Realism", aspect: "aspect-[3/4]", src: "/images/portfolio-realism-real-02.jpg", alt: "Lion with roses and roman numerals full sleeve tattoo" },
-  { id: 6, category: "Balinese", aspect: "aspect-[3/4]", src: "/images/portfolio-balinese-real-02.jpg", alt: "Full back Balinese Barong demon mask tattoo masterpiece" },
-  { id: 7, category: "Black & Grey", aspect: "aspect-[3/4]", src: "/images/portfolio-blackgrey-real-02.jpg", alt: "Phoenix eagle chest piece tattoo in black and grey" },
+  { id: 1, category: "Japanese", src: "/images/portfolio-japanese-real.jpg", alt: "Japanese dragon koi half-sleeve tattoo in vibrant red and orange" },
+  { id: 2, category: "Realism", src: "/images/portfolio-realism-real.jpg", alt: "Egyptian Bastet cat and scarab realistic forearm tattoo in black and grey" },
+  { id: 3, category: "Black & Grey", src: "/images/portfolio-blackgrey-real.jpg", alt: "Zeus and eagle Greek mythology full sleeve tattoo in black and grey" },
+  { id: 4, category: "Balinese", src: "/images/portfolio-balinese-real.jpg", alt: "Full sleeve tattoo with Balinese Barong mural backdrop" },
+  { id: 5, category: "Realism", src: "/images/portfolio-realism-real-02.jpg", alt: "Lion with roses and roman numerals full sleeve tattoo" },
+  { id: 6, category: "Balinese", src: "/images/portfolio-balinese-real-02.jpg", alt: "Full back Balinese Barong demon mask tattoo masterpiece" },
 ];
 
 export default function Portfolio() {
@@ -29,7 +28,7 @@ export default function Portfolio() {
 
   return (
     <section id="portfolio" className="py-16 md:py-28 bg-bg-primary">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <SectionHeading
           subtitle="Our Work"
           title="Portfolio"
@@ -37,12 +36,12 @@ export default function Portfolio() {
         />
 
         {/* Filter Bar */}
-        <ScrollReveal className="flex flex-wrap justify-center gap-1.5 md:gap-2 mb-14">
+        <ScrollReveal className="flex flex-wrap justify-center gap-2 md:gap-2.5 mb-10 md:mb-14">
           {filters.map((filter) => (
             <button
               key={filter}
               onClick={() => setActive(filter)}
-              className={`px-3 md:px-5 py-1.5 md:py-2 text-[0.7rem] tracking-[0.15em] uppercase transition-all duration-300 cursor-pointer ${
+              className={`px-4 md:px-6 py-2 md:py-2.5 text-[0.65rem] md:text-[0.7rem] tracking-[0.15em] uppercase transition-all duration-300 cursor-pointer rounded-full ${
                 active === filter
                   ? "bg-blue-electric text-white"
                   : "border border-divider text-text-muted hover:border-blue-electric/50 hover:text-text-secondary"
@@ -61,12 +60,12 @@ export default function Portfolio() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.3 }}
-            className="columns-1 sm:columns-2 lg:columns-3 gap-3 [&>*]:mb-3"
+            className="grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-4"
           >
             {filtered.map((item, i) => (
               <ScrollReveal key={item.id} delay={i * 0.07}>
                 <div
-                  className={`group relative overflow-hidden cursor-pointer break-inside-avoid ${item.aspect}`}
+                  className="group relative overflow-hidden cursor-pointer rounded-lg aspect-[3/4]"
                 >
                   <Image
                     src={item.src}
@@ -78,23 +77,23 @@ export default function Portfolio() {
                   />
 
                   {/* Logo Watermark */}
-                  <div className="absolute bottom-3 right-3 z-10 opacity-20 pointer-events-none">
+                  <div className="absolute bottom-3 right-3 z-10 opacity-15 pointer-events-none">
                     <Image
                       src="/logo.png"
                       alt=""
-                      width={60}
-                      height={24}
+                      width={50}
+                      height={20}
                       className="object-contain"
                       aria-hidden="true"
                     />
                   </div>
 
                   {/* Hover Overlay */}
-                  <div className="absolute inset-0 bg-bg-primary/80 opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-center gap-2">
+                  <div className="absolute inset-0 bg-bg-primary/70 opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-center gap-2 rounded-lg">
                     <p className="text-blue-electric text-[0.65rem] tracking-[0.25em] uppercase font-medium">
                       {item.category}
                     </p>
-                    <span className="mt-2 w-8 h-px bg-blue-electric" />
+                    <span className="mt-1 w-6 h-px bg-blue-electric/60" />
                   </div>
                 </div>
               </ScrollReveal>
@@ -102,12 +101,12 @@ export default function Portfolio() {
           </motion.div>
         </AnimatePresence>
 
-        <ScrollReveal className="text-center mt-14">
+        <ScrollReveal className="text-center mt-10 md:mt-14">
           <a
             href={siteConfig.contact.instagram}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block px-8 py-3 border border-blue-electric/60 text-blue-electric tracking-[0.12em] uppercase text-[0.75rem] font-medium hover:bg-blue-electric hover:text-white transition-all duration-300"
+            className="inline-block px-8 py-3 border border-blue-electric/40 text-blue-electric tracking-[0.12em] uppercase text-[0.7rem] font-medium rounded-full hover:bg-blue-electric hover:text-white transition-all duration-300"
           >
             View Full Gallery
           </a>
