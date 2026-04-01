@@ -51,8 +51,8 @@ export default function HeroSales() {
       </noscript>
 
       {/* Overlay gradients for readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/80 via-bg-primary/50 to-bg-primary" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#000000aa_70%)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/70 via-bg-primary/30 to-bg-primary/80" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,#00000066_80%)]" />
 
       {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-4xl pt-20">
@@ -65,11 +65,11 @@ export default function HeroSales() {
 
         <motion.h1
           {...animate(0.5)}
-          className="font-[family-name:var(--font-heading)] text-[2.75rem] leading-[1] sm:text-6xl md:text-7xl lg:text-8xl font-semibold text-text-primary tracking-tight"
+          className="font-[family-name:var(--font-heading)] text-[2.75rem] leading-[1] sm:text-6xl md:text-7xl lg:text-8xl font-semibold text-text-primary tracking-tight drop-shadow-[0_2px_24px_rgba(0,0,0,0.8)]"
         >
           Your Story,
           <br />
-          <span className="text-blue-deep">Inked</span> in Paradise
+          <span className="text-blue-electric">Inked</span> in Paradise
         </motion.h1>
 
         <motion.p
