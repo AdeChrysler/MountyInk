@@ -98,10 +98,12 @@ export default function ContactSection() {
               {/* CTA */}
               <div className="pt-4">
                 <a
-                  href={`mailto:${siteConfig.contact.email}`}
+                  href={getWhatsAppUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-block px-8 py-3 bg-blue-electric text-white font-semibold tracking-[0.12em] uppercase text-[0.75rem] hover:bg-blue-deep transition-colors"
                 >
-                  Send an Inquiry
+                  Chat on WhatsApp
                 </a>
               </div>
             </div>

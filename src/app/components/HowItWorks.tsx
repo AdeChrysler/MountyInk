@@ -8,21 +8,21 @@ const steps = [
     number: "01",
     title: "Consult",
     description:
-      "Share your vision. We discuss design ideas, placement, size, and match you with the perfect artist for your style.",
+      "Drop us a message on WhatsApp. Share your ideas, inspiration, and we'll match you with the perfect artist for your vision.",
   },
   {
     icon: Palette,
     number: "02",
     title: "Design",
     description:
-      "Your artist creates a custom design tailored to your body and story. We refine together until it's exactly right.",
+      "Your artist creates a one-of-a-kind design shaped by your story. We refine together until every detail feels right.",
   },
   {
     icon: Pen,
     number: "03",
     title: "Ink",
     description:
-      "Relax in our premium studio while your artist brings the design to life. Every line, every shade — pure artistry.",
+      "Settle into our premium studio while your artist brings the design to life. Every line intentional, every shade masterful.",
   },
 ];
 

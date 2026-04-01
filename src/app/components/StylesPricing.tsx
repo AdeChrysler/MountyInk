@@ -1,6 +1,7 @@
 import Image from "next/image";
 import ScrollReveal from "./ScrollReveal";
 import SectionHeading from "./SectionHeading";
+import { getWhatsAppUrl } from "../lib/config";
 
 const styles = [
   {
@@ -63,10 +64,12 @@ export default function StylesPricing() {
                   </p>
                   <div className="mt-5 pt-5 border-t border-divider">
                     <a
-                      href="#booking"
+                      href={getWhatsAppUrl()}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-[0.7rem] text-blue-electric tracking-[0.1em] uppercase font-medium hover:text-text-primary transition-colors"
                     >
-                      Contact for Quote &rarr;
+                      Get a Quote &rarr;
                     </a>
                   </div>
                 </div>

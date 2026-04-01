@@ -16,7 +16,7 @@ export const siteConfig = {
     email: "hello@mountyink.com",
     whatsapp: "62XXXXXXXXXXX",
     whatsappMessage: "Hi Mounty Ink! I'd like to book a tattoo session.",
-    instagram: "#", // TODO: Add real Instagram URL
+    instagram: "https://www.instagram.com/mountyink.studio/"
   },
 
   location: {

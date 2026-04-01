@@ -6,7 +6,7 @@ const reasons = [
   {
     icon: Fingerprint,
     title: "100% Custom Work",
-    description: "No flash, no templates. Every piece is designed from scratch — a one-of-one collaboration between you and your artist.",
+    description: "No flash, no templates. Every piece is born from your story — a true one-of-one collaboration between you and your artist.",
   },
   {
     icon: Shield,
@@ -21,12 +21,12 @@ const reasons = [
   {
     icon: Globe,
     title: "Made for Travelers",
-    description: "English-speaking artists, international standards, and a booking process designed for visitors to Bali.",
+    description: "English-speaking artists, international hygiene standards, and a seamless booking process designed for visitors exploring Bali.",
   },
   {
     icon: Heart,
     title: "The Full Experience",
-    description: "Not just a tattoo — a memory. Our studio is a sanctuary with Balinese architecture, curated atmosphere, and genuine hospitality.",
+    description: "Not just a tattoo — a memory woven into your Bali journey. Balinese architecture, curated atmosphere, and genuine warmth from arrival to aftercare.",
   },
   {
     icon: Clock,

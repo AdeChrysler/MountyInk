@@ -22,10 +22,12 @@ export default function MobileBookingBar() {
     >
       <div className="bg-bg-primary/95 backdrop-blur-xl border-t border-divider px-4 py-3 flex gap-3">
         <a
-          href={`mailto:${siteConfig.contact.email}`}
+          href={getWhatsAppUrl()}
+          target="_blank"
+          rel="noopener noreferrer"
           className="flex-1 py-3 bg-blue-electric text-white text-center text-xs font-semibold tracking-[0.12em] uppercase"
         >
-          Get in Touch
+          Book Now
         </a>
         <a
           href={getWhatsAppUrl()}

@@ -1,5 +1,5 @@
 import ScrollReveal from "./ScrollReveal";
-import { siteConfig, getWhatsAppUrl } from "../lib/config";
+import { getWhatsAppUrl } from "../lib/config";
 
 export default function BookingCTA() {
   return (
@@ -11,39 +11,33 @@ export default function BookingCTA() {
       <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
         <ScrollReveal>
           <p className="text-white/50 text-xs tracking-[0.35em] uppercase font-medium mb-5">
-            Ready?
+            Your Journey Starts Here
           </p>
 
           <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white font-semibold leading-[1.05] tracking-tight">
-            Get Inked
+            Ready to Get
             <br />
-            in Bali
+            Inked in Bali?
           </h2>
 
           <p className="mt-6 text-white/60 text-base md:text-lg max-w-md mx-auto leading-relaxed">
-            Start your journey today. Reach out and let&apos;s create something
-            you&apos;ll carry forever.
+            One message is all it takes. Tell us your vision and
+            we&apos;ll craft something you&apos;ll wear with pride — forever.
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href={`mailto:${siteConfig.contact.email}`}
-              className="px-10 py-4 bg-white text-blue-deep font-semibold tracking-[0.12em] uppercase text-sm hover:bg-text-primary transition-colors duration-300"
-            >
-              Get in Touch
-            </a>
-            <a
               href={getWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-10 py-4 border border-white/25 text-white font-semibold tracking-[0.12em] uppercase text-sm hover:border-white/60 hover:bg-white/5 transition-all duration-300"
+              className="px-10 py-4 bg-white text-blue-deep font-semibold tracking-[0.12em] uppercase text-sm hover:bg-text-primary transition-colors duration-300 rounded-full"
             >
-              WhatsApp Us
+              Chat on WhatsApp
             </a>
           </div>
 
           <p className="mt-8 text-white/30 text-[0.65rem] tracking-[0.15em] uppercase">
-            Free consultation &middot; No commitment
+            Free consultation &middot; No commitment &middot; Reply within hours
           </p>
         </ScrollReveal>
       </div>

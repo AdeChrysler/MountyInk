@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
+import { getWhatsAppUrl } from "../lib/config";
 
 export default function HeroSales() {
   const reduced = useReducedMotion();
@@ -84,16 +85,18 @@ export default function HeroSales() {
           className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
         >
           <a
-            href="#booking"
-            className="group px-10 py-4 bg-blue-electric text-white font-semibold tracking-[0.12em] uppercase text-sm hover:bg-blue-deep transition-all duration-300 animate-glow-pulse"
+            href={getWhatsAppUrl()}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group px-10 py-4 bg-blue-electric text-white font-semibold tracking-[0.12em] uppercase text-sm rounded-full hover:bg-blue-deep transition-all duration-300 animate-glow-pulse"
           >
-            Book Your Session
+            Book via WhatsApp
           </a>
           <a
             href="#portfolio"
-            className="px-10 py-4 border border-text-muted/25 text-text-primary font-semibold tracking-[0.12em] uppercase text-sm hover:border-blue-electric hover:text-blue-electric transition-all duration-300"
+            className="px-10 py-4 border border-text-muted/25 text-text-primary font-semibold tracking-[0.12em] uppercase text-sm rounded-full hover:border-blue-electric hover:text-blue-electric transition-all duration-300"
           >
-            View Gallery
+            Explore Our Work
           </a>
         </motion.div>
       </div>
