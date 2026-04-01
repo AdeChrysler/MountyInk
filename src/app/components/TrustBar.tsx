@@ -23,9 +23,9 @@ export default function TrustBar() {
           {highlights.map((item, i) => (
             <motion.div
               key={item.label}
-              initial={reduced ? {} : { opacity: 0, y: 16 }}
+              initial={reduced ? {} : { opacity: 0, y: 12 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
+              transition={{ duration: 0.45, delay: i * 0.08 }}
               className="flex items-center gap-3 justify-center"
             >
               {item.accent ? (

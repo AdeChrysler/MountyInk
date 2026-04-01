@@ -13,7 +13,7 @@ const commitments = [
 
 export default function OurCommitment() {
   return (
-    <section className="py-24 md:py-32 bg-bg-primary border-t border-divider">
+    <section className="py-16 md:py-28 bg-bg-primary border-t border-divider">
       <div className="max-w-4xl mx-auto px-6">
         <ScrollReveal className="text-center mb-14">
           <div className="flex items-center justify-center gap-1 mb-5">

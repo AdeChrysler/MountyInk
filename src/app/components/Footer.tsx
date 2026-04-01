@@ -48,10 +48,10 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3">
               {[
-                { label: "Gallery", href: "#portfolio" },
-                { label: "Our Artists", href: "#artists" },
-                { label: "Styles", href: "#styles" },
-                { label: "Get in Touch", href: "#booking" },
+                { label: "Gallery", href: "/#portfolio" },
+                { label: "Our Artists", href: "/#artists" },
+                { label: "Styles", href: "/#styles" },
+                { label: "Get in Touch", href: "/#booking" },
               ].map((item) => (
                 <li key={item.label}>
                   <a href={item.href} className="text-text-muted hover:text-blue-electric text-sm transition-colors duration-200">
@@ -71,7 +71,7 @@ export default function Footer() {
               {[
                 { label: "About Us", href: "/company" },
                 { label: "Our Story", href: "/company#story" },
-                { label: "FAQ", href: "#faq" },
+                { label: "FAQ", href: "/#faq" },
               ].map((item) => (
                 <li key={item.label}>
                   <a href={item.href} className="text-text-muted hover:text-blue-electric text-sm transition-colors duration-200">

@@ -3,9 +3,11 @@ import SectionHeading from "./SectionHeading";
 import { MapPin, Mail, Clock, Instagram, MessageCircle } from "lucide-react";
 import { siteConfig, getWhatsAppUrl } from "../lib/config";
 
+const mapEmbed = siteConfig.location.mapEmbed;
+
 export default function ContactSection() {
   return (
-    <section id="contact" className="py-24 md:py-32 bg-bg-secondary/30">
+    <section id="contact" className="py-16 md:py-28 bg-bg-secondary/30">
       <div className="max-w-7xl mx-auto px-6">
         <SectionHeading
           subtitle="Get in Touch"
@@ -16,9 +18,24 @@ export default function ContactSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14">
           {/* Map */}
           <ScrollReveal direction="left">
-            <div className="img-placeholder aspect-[4/3] lg:aspect-auto lg:h-full min-h-[360px]">
-              <span>Google Maps — Bali studio location</span>
-            </div>
+            {mapEmbed ? (
+              <iframe
+                src={mapEmbed}
+                className="w-full aspect-[4/3] lg:aspect-auto lg:h-full min-h-[360px] border-0 grayscale"
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Mounty Ink studio location"
+              />
+            ) : (
+              <div className="img-placeholder aspect-[4/3] lg:aspect-auto lg:h-full min-h-[360px] flex items-center justify-center">
+                <div className="text-center">
+                  <MapPin size={28} className="text-blue-electric mx-auto mb-3" strokeWidth={1.5} />
+                  <p className="text-text-muted text-sm">Bali, Indonesia</p>
+                  <p className="text-text-muted/50 text-xs mt-1">Map coming soon</p>
+                </div>
+              </div>
+            )}
           </ScrollReveal>
 
           {/* Info */}

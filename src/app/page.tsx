@@ -9,9 +9,11 @@ import Testimonials from "./components/Testimonials";
 import HowItWorks from "./components/HowItWorks";
 import BookingCTA from "./components/BookingCTA";
 import FAQ from "./components/FAQ";
+import VideoShowcase from "./components/VideoShowcase";
 import SocialProof from "./components/SocialProof";
 import Footer from "./components/Footer";
 import WhatsAppFloat from "./components/WhatsAppFloat";
+import MobileBookingBar from "./components/MobileBookingBar";
 
 export default function SalesPage() {
   return (
@@ -26,12 +28,14 @@ export default function SalesPage() {
         <ArtistSpotlight />
         <Testimonials />
         <HowItWorks />
+        <VideoShowcase />
         <BookingCTA />
         <FAQ />
         <SocialProof />
       </main>
       <Footer />
       <WhatsAppFloat />
+      <MobileBookingBar />
     </>
   );
 }

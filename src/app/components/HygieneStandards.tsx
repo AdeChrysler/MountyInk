@@ -31,7 +31,7 @@ const standards = [
 
 export default function HygieneStandards() {
   return (
-    <section className="py-24 md:py-32 bg-bg-primary">
+    <section className="py-16 md:py-28 bg-bg-primary">
       <div className="max-w-7xl mx-auto px-6">
         <SectionHeading
           subtitle="Your Safety"
@@ -39,7 +39,7 @@ export default function HygieneStandards() {
           description="Your wellbeing is our priority. We maintain strict protocols for every session."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
           {standards.map((item, i) => (
             <ScrollReveal key={item.title} delay={i * 0.08}>
               <div className="flex gap-5 p-6 md:p-7 border border-divider bg-gradient-card hover:border-blue-electric/25 transition-all duration-500">

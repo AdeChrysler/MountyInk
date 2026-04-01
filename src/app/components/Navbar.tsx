@@ -65,7 +65,7 @@ export default function Navbar({ variant = "sales" }: NavbarProps) {
       <motion.nav
         initial={{ y: 0 }}
         animate={{ y: visible ? 0 : -100 }}
-        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled ? "glass py-3" : "py-5 bg-transparent"
         }`}
@@ -136,7 +136,7 @@ export default function Navbar({ variant = "sales" }: NavbarProps) {
                   onClick={() => setMobileOpen(false)}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 + i * 0.06 }}
+                  transition={{ delay: 0.1 + i * 0.05 }}
                   className="font-[family-name:var(--font-heading)] text-3xl text-text-primary hover:text-blue-electric transition-colors"
                 >
                   {link.label}
@@ -147,7 +147,7 @@ export default function Navbar({ variant = "sales" }: NavbarProps) {
                 onClick={() => setMobileOpen(false)}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 + links.length * 0.06 }}
+                transition={{ delay: 0.1 + links.length * 0.05 }}
                 className="mt-4 px-12 py-3.5 bg-blue-electric text-white text-sm font-semibold tracking-[0.15em] uppercase"
               >
                 {ctaLabel}

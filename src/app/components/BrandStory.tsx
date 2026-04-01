@@ -3,7 +3,7 @@ import ScrollReveal from "./ScrollReveal";
 
 export default function BrandStory() {
   return (
-    <section id="story" className="py-24 md:py-32 bg-bg-primary">
+    <section id="story" className="py-16 md:py-28 bg-bg-primary">
       <div className="max-w-7xl mx-auto px-6">
         {/* Row 1: Origin Story */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -37,8 +37,8 @@ export default function BrandStory() {
           <ScrollReveal direction="right">
             <div className="relative aspect-[4/5] overflow-hidden">
               <Image
-                src="/images/story-founder.png"
-                alt="Mounty Ink studio founder"
+                src="/images/portfolio-balinese-real.jpg"
+                alt="Full sleeve tattoo with Balinese Barong mural backdrop"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover img-crop"
@@ -49,12 +49,12 @@ export default function BrandStory() {
         </div>
 
         {/* Row 2: Philosophy */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mt-24 md:mt-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mt-16 md:mt-28">
           <ScrollReveal direction="left" className="order-2 lg:order-1">
             <div className="relative aspect-[4/3] overflow-hidden">
               <Image
-                src="/images/studio-reception.png"
-                alt="Mounty Ink studio reception — marble floors, leather sofa, brand logo wall"
+                src="/images/portfolio-blackgrey-real-02.jpg"
+                alt="Phoenix eagle chest piece — Mounty Ink craftsmanship"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover img-crop"

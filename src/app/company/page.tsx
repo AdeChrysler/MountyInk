@@ -9,6 +9,7 @@ import TeamFull from "../components/TeamFull";
 import Portfolio from "../components/Portfolio";
 import HygieneStandards from "../components/HygieneStandards";
 import Testimonials from "../components/Testimonials";
+import VideoReel from "../components/VideoReel";
 import SocialProof from "../components/SocialProof";
 import ContactSection from "../components/ContactSection";
 import Footer from "../components/Footer";
@@ -38,6 +39,7 @@ export default function CompanyProfilePage() {
         <Portfolio />
         <HygieneStandards />
         <Testimonials />
+        <VideoReel />
         <SocialProof />
         <ContactSection />
       </main>

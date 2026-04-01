@@ -39,7 +39,7 @@ export default function FAQ() {
   const toggle = (i: number) => setOpenIndex(openIndex === i ? null : i);
 
   return (
-    <section id="faq" className="py-24 md:py-32 bg-bg-primary">
+    <section id="faq" className="py-16 md:py-28 bg-bg-primary">
       <div className="max-w-3xl mx-auto px-6">
         <SectionHeading
           subtitle="Common Questions"
@@ -79,7 +79,7 @@ export default function FAQ() {
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                        transition={{ duration: 0.3, ease: [0.33, 1, 0.68, 1] }}
                         className="overflow-hidden"
                       >
                         <p className="px-5 md:px-6 pb-5 md:pb-6 text-text-muted text-sm leading-relaxed">

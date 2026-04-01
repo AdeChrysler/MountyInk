@@ -1,16 +1,16 @@
-import Image from "next/image";
+import { User } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 import SectionHeading from "./SectionHeading";
 
 const artists = [
-  { src: "/images/artist-01.png", alt: "Tattoo artist 1" },
-  { src: "/images/artist-02.png", alt: "Tattoo artist 2" },
-  { src: "/images/artist-03.png", alt: "Tattoo artist 3" },
+  { specialty: "Realism & Portraits" },
+  { specialty: "Balinese & Japanese" },
+  { specialty: "Black & Grey" },
 ];
 
 export default function TeamFull() {
   return (
-    <section id="team" className="py-24 md:py-32 bg-bg-secondary/30">
+    <section id="team" className="py-16 md:py-28 bg-bg-secondary/30">
       <div className="max-w-5xl mx-auto px-6">
         <SectionHeading
           subtitle="The People"
@@ -22,22 +22,12 @@ export default function TeamFull() {
           {artists.map((artist, i) => (
             <ScrollReveal key={i} delay={i * 0.1}>
               <div className="text-center">
-                <div className="relative aspect-[3/4] mb-5 overflow-hidden">
-                  <Image
-                    src={artist.src}
-                    alt={artist.alt}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover img-crop"
-                    loading="lazy"
-                  />
+                <div className="relative aspect-[3/4] mb-5 overflow-hidden bg-gradient-card border border-divider flex items-center justify-center">
+                  <User size={48} className="text-text-muted/20" strokeWidth={1} />
                 </div>
                 <div className="w-6 h-px bg-blue-electric/30 mx-auto mb-3" />
-                <p className="text-text-muted text-xs tracking-[0.2em] uppercase">
-                  Artist Profile
-                </p>
-                <p className="text-text-muted/40 text-[0.6rem] mt-1.5 tracking-wider">
-                  Coming Soon
+                <p className="text-text-secondary text-xs tracking-[0.2em] uppercase">
+                  {artist.specialty}
                 </p>
               </div>
             </ScrollReveal>
@@ -49,9 +39,6 @@ export default function TeamFull() {
             Each artist at Mounty Ink brings a distinct perspective and mastery
             — spanning realism, fine line, sacred geometry, traditional Balinese,
             Japanese, and watercolor styles.
-          </p>
-          <p className="text-text-muted text-sm mt-4">
-            Full artist profiles and portfolios are coming soon.
           </p>
         </ScrollReveal>
       </div>

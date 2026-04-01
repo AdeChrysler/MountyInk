@@ -2,7 +2,7 @@
 
 @theme {
   /* ── Brand Colors (SRD §4.1) ── */
-  --color-bg-primary: #050507;
+  --color-bg-primary: #000000;
   --color-bg-secondary: #0A0F1A;
   --color-bg-card: #111827;
   --color-bg-elevated: #1E293B;
@@ -31,7 +31,7 @@
 
 /* ── Keyframes ── */
 @keyframes fade-up {
-  from { opacity: 0; transform: translateY(40px); }
+  from { opacity: 0; transform: translateY(24px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
@@ -46,13 +46,13 @@
 }
 
 @keyframes slide-right {
-  from { opacity: 0; transform: translateX(-40px); }
+  from { opacity: 0; transform: translateX(-24px); }
   to { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes glow-pulse {
-  0%, 100% { box-shadow: 0 0 20px #2E7BFF22, 0 0 60px #2E7BFF11; }
-  50% { box-shadow: 0 0 30px #2E7BFF44, 0 0 80px #2E7BFF22; }
+  0%, 100% { box-shadow: 0 0 14px #2E7BFF22, 0 0 42px #2E7BFF11; }
+  50% { box-shadow: 0 0 21px #2E7BFF44, 0 0 56px #2E7BFF22; }
 }
 
 @keyframes float {
@@ -105,7 +105,7 @@ body {
 }
 
 .bg-gradient-hero {
-  background: radial-gradient(ellipse at 50% 0%, #0A0F1A 0%, #050507 70%);
+  background: radial-gradient(ellipse at 50% 0%, #0A0F1A 0%, #000000 70%);
 }
 
 .bg-gradient-cta {
@@ -118,7 +118,7 @@ body {
 
 /* ── Glass ── */
 .glass {
-  background: rgba(5, 5, 7, 0.75);
+  background: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(24px) saturate(1.2);
   -webkit-backdrop-filter: blur(24px) saturate(1.2);
   border-bottom: 1px solid rgba(30, 41, 59, 0.4);
@@ -177,10 +177,27 @@ body {
 }
 
 /* ── Watermark Crop — scales image 105% and shifts to hide bottom-right corner ── */
+/* Client feedback: consistent dark moody color grading on portfolio images */
 .img-crop {
   object-fit: cover;
   object-position: center top;
   scale: 1.06;
+  filter: brightness(0.92) contrast(1.08) saturate(0.9);
+}
+
+/* Portfolio watermark overlay */
+.portfolio-watermark {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  z-index: 10;
+  opacity: 0.15;
+  pointer-events: none;
+  transition: opacity 0.5s;
+}
+
+.group:hover .portfolio-watermark {
+  opacity: 0.05;
 }
 
 /* ── Focus Styles (GUIDE §11) ── */

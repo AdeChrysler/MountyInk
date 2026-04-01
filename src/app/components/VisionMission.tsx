@@ -25,7 +25,7 @@ const values = [
 
 export default function VisionMission() {
   return (
-    <section id="vision" className="py-24 md:py-32 bg-bg-secondary/30">
+    <section id="vision" className="py-16 md:py-28 bg-bg-secondary/30">
       <div className="max-w-7xl mx-auto px-6">
         <SectionHeading
           subtitle="What Drives Us"

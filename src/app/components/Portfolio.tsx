@@ -5,19 +5,18 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import ScrollReveal from "./ScrollReveal";
 import SectionHeading from "./SectionHeading";
+import { siteConfig } from "../lib/config";
 
-const filters = ["All", "Realism", "Fine Line", "Balinese", "Black & Grey", "Color"];
+const filters = ["All", "Realism", "Japanese", "Balinese", "Black & Grey"];
 
 const portfolioItems = [
-  { id: 1, category: "Realism", aspect: "aspect-[3/4]", src: "/images/portfolio-realism-01.png", alt: "Photorealistic portrait tattoo" },
-  { id: 2, category: "Fine Line", aspect: "aspect-[4/3]", src: "/images/portfolio-fineline-01.png", alt: "Botanical fine line tattoo" },
-  { id: 3, category: "Balinese", aspect: "aspect-square", src: "/images/portfolio-balinese-01.png", alt: "Balinese mandala tattoo" },
-  { id: 4, category: "Black & Grey", aspect: "aspect-[3/4]", src: "/images/portfolio-blackgrey-01.png", alt: "Black and grey lion tattoo" },
-  { id: 5, category: "Color", aspect: "aspect-[4/3]", src: "/images/portfolio-color-01.png", alt: "Watercolor hummingbird tattoo" },
-  { id: 6, category: "Balinese", aspect: "aspect-square", src: "/images/portfolio-balinese-02.png", alt: "Sacred geometry dotwork tattoo" },
-  { id: 7, category: "Realism", aspect: "aspect-[3/4]", src: "/images/portfolio-realism-02.png", alt: "Nature scene half sleeve tattoo" },
-  { id: 8, category: "Fine Line", aspect: "aspect-[4/3]", src: "/images/portfolio-fineline-02.png", alt: "Minimalist wave tattoo" },
-  { id: 9, category: "Color", aspect: "aspect-square", src: "/images/portfolio-japanese-01.png", alt: "Japanese koi fish tattoo" },
+  { id: 1, category: "Japanese", aspect: "aspect-[3/4]", src: "/images/portfolio-japanese-real.jpg", alt: "Japanese dragon koi half-sleeve tattoo in vibrant red and orange" },
+  { id: 2, category: "Realism", aspect: "aspect-[3/4]", src: "/images/portfolio-realism-real.jpg", alt: "Egyptian Bastet cat and scarab realistic forearm tattoo in black and grey" },
+  { id: 3, category: "Black & Grey", aspect: "aspect-[3/4]", src: "/images/portfolio-blackgrey-real.jpg", alt: "Zeus and eagle Greek mythology full sleeve tattoo in black and grey" },
+  { id: 4, category: "Balinese", aspect: "aspect-[3/4]", src: "/images/portfolio-balinese-real.jpg", alt: "Full sleeve tattoo with Balinese Barong mural backdrop" },
+  { id: 5, category: "Realism", aspect: "aspect-[3/4]", src: "/images/portfolio-realism-real-02.jpg", alt: "Lion with roses and roman numerals full sleeve tattoo" },
+  { id: 6, category: "Balinese", aspect: "aspect-[3/4]", src: "/images/portfolio-balinese-real-02.jpg", alt: "Full back Balinese Barong demon mask tattoo masterpiece" },
+  { id: 7, category: "Black & Grey", aspect: "aspect-[3/4]", src: "/images/portfolio-blackgrey-real-02.jpg", alt: "Phoenix eagle chest piece tattoo in black and grey" },
 ];
 
 export default function Portfolio() {
@@ -29,7 +28,7 @@ export default function Portfolio() {
       : portfolioItems.filter((item) => item.category === active);
 
   return (
-    <section id="portfolio" className="py-24 md:py-32 bg-bg-primary">
+    <section id="portfolio" className="py-16 md:py-28 bg-bg-primary">
       <div className="max-w-7xl mx-auto px-6">
         <SectionHeading
           subtitle="Our Work"
@@ -38,12 +37,12 @@ export default function Portfolio() {
         />
 
         {/* Filter Bar */}
-        <ScrollReveal className="flex flex-wrap justify-center gap-2 md:gap-3 mb-14">
+        <ScrollReveal className="flex flex-wrap justify-center gap-1.5 md:gap-2 mb-14">
           {filters.map((filter) => (
             <button
               key={filter}
               onClick={() => setActive(filter)}
-              className={`px-4 md:px-5 py-2 text-[0.7rem] tracking-[0.15em] uppercase transition-all duration-300 cursor-pointer ${
+              className={`px-3 md:px-5 py-1.5 md:py-2 text-[0.7rem] tracking-[0.15em] uppercase transition-all duration-300 cursor-pointer ${
                 active === filter
                   ? "bg-blue-electric text-white"
                   : "border border-divider text-text-muted hover:border-blue-electric/50 hover:text-text-secondary"
@@ -62,7 +61,7 @@ export default function Portfolio() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.3 }}
-            className="columns-1 sm:columns-2 lg:columns-3 gap-4 [&>*]:mb-4"
+            className="columns-1 sm:columns-2 lg:columns-3 gap-3 [&>*]:mb-3"
           >
             {filtered.map((item, i) => (
               <ScrollReveal key={item.id} delay={i * 0.07}>
@@ -77,6 +76,18 @@ export default function Portfolio() {
                     className="object-cover img-crop group-hover:scale-105 transition-transform duration-700"
                     loading="lazy"
                   />
+
+                  {/* Logo Watermark */}
+                  <div className="absolute bottom-3 right-3 z-10 opacity-20 pointer-events-none">
+                    <Image
+                      src="/logo.png"
+                      alt=""
+                      width={60}
+                      height={24}
+                      className="object-contain"
+                      aria-hidden="true"
+                    />
+                  </div>
 
                   {/* Hover Overlay */}
                   <div className="absolute inset-0 bg-bg-primary/80 opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-center gap-2">
@@ -93,7 +104,9 @@ export default function Portfolio() {
 
         <ScrollReveal className="text-center mt-14">
           <a
-            href="#"
+            href={siteConfig.contact.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-block px-8 py-3 border border-blue-electric/60 text-blue-electric tracking-[0.12em] uppercase text-[0.75rem] font-medium hover:bg-blue-electric hover:text-white transition-all duration-300"
           >
             View Full Gallery

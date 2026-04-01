@@ -4,25 +4,25 @@ import SectionHeading from "./SectionHeading";
 
 const studioImages = [
   {
-    src: "/images/studio-reception.png",
-    alt: "Mounty Ink reception lounge — marble floors, leather sofa, art shelves",
+    src: "/images/portfolio-balinese-real-02.jpg",
+    alt: "Full back Balinese Barong demon mask tattoo masterpiece",
     className: "col-span-2 row-span-2",
   },
   {
-    src: "/images/studio-room.png",
-    alt: "Tattoo room — luxury beds, dark blue walls, marble floor",
+    src: "/images/portfolio-realism-real-02.jpg",
+    alt: "Lion with roses and roman numerals full sleeve tattoo",
     className: "col-span-2 row-span-1",
   },
   {
-    src: "/images/studio-exterior.png",
-    alt: "Mounty Ink Bali studio exterior at dusk",
+    src: "/images/portfolio-blackgrey-real.jpg",
+    alt: "Zeus and eagle Greek mythology full sleeve in black and grey",
     className: "col-span-2 row-span-1",
   },
 ];
 
 export default function StudioGallery() {
   return (
-    <section id="studio" className="py-24 md:py-32 bg-bg-primary">
+    <section id="studio" className="py-16 md:py-28 bg-bg-primary">
       <div className="max-w-7xl mx-auto px-6">
         <SectionHeading
           subtitle="The Space"

@@ -1,16 +1,16 @@
-import Image from "next/image";
+import { User } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 import SectionHeading from "./SectionHeading";
 
 const artists = [
-  { src: "/images/artist-01.png", alt: "Tattoo artist portrait 1" },
-  { src: "/images/artist-02.png", alt: "Tattoo artist portrait 2" },
-  { src: "/images/artist-03.png", alt: "Tattoo artist portrait 3" },
+  { specialty: "Realism & Portraits" },
+  { specialty: "Balinese & Japanese" },
+  { specialty: "Black & Grey" },
 ];
 
 export default function ArtistSpotlight() {
   return (
-    <section id="artists" className="py-24 md:py-32 bg-bg-primary">
+    <section id="artists" className="py-16 md:py-28 bg-bg-primary">
       <div className="max-w-5xl mx-auto px-6">
         <SectionHeading
           subtitle="The Artists"
@@ -22,23 +22,13 @@ export default function ArtistSpotlight() {
           {artists.map((artist, i) => (
             <ScrollReveal key={i} delay={i * 0.1}>
               <div className="group">
-                <div className="relative aspect-[3/4] mb-5 overflow-hidden">
-                  <Image
-                    src={artist.src}
-                    alt={artist.alt}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover img-crop group-hover:scale-105 transition-transform duration-700"
-                    loading="lazy"
-                  />
+                <div className="relative aspect-[3/4] mb-5 overflow-hidden bg-gradient-card border border-divider flex items-center justify-center">
+                  <User size={48} className="text-text-muted/20" strokeWidth={1} />
                 </div>
                 <div className="text-center">
                   <div className="w-8 h-px bg-blue-electric/40 mx-auto mb-4" />
-                  <p className="text-text-muted text-xs tracking-[0.2em] uppercase">
-                    Artist Profile
-                  </p>
-                  <p className="text-text-muted/50 text-[0.65rem] mt-2 tracking-wider">
-                    Coming Soon
+                  <p className="text-text-secondary text-xs tracking-[0.2em] uppercase">
+                    {artist.specialty}
                   </p>
                 </div>
               </div>

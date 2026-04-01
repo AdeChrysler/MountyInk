@@ -3,7 +3,7 @@ import { siteConfig, getWhatsAppUrl } from "../lib/config";
 
 export default function BookingCTA() {
   return (
-    <section id="booking" className="py-24 md:py-32 relative overflow-hidden">
+    <section id="booking" className="py-16 md:py-28 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-cta" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_50%,rgba(255,255,255,0.06),transparent_60%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_80%,rgba(46,123,255,0.1),transparent_50%)]" />

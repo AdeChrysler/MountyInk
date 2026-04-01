@@ -18,14 +18,10 @@ export default function ScrollReveal({
 }: ScrollRevealProps) {
   const prefersReducedMotion = useReducedMotion();
 
-  if (prefersReducedMotion) {
-    return <div className={className}>{children}</div>;
-  }
-
   const offsets = {
-    up: { y: 50, x: 0 },
-    left: { y: 0, x: -50 },
-    right: { y: 0, x: 50 },
+    up: { y: 30, x: 0 },
+    left: { y: 0, x: -30 },
+    right: { y: 0, x: 30 },
     none: { y: 0, x: 0 },
   };
 
@@ -33,12 +29,12 @@ export default function ScrollReveal({
 
   return (
     <motion.div
-      initial={{ opacity: 0, ...offset }}
+      initial={prefersReducedMotion ? false : { opacity: 0, ...offset }}
       whileInView={{ opacity: 1, y: 0, x: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{
-        duration: 0.75,
-        delay,
+        duration: prefersReducedMotion ? 0 : 0.7,
+        delay: prefersReducedMotion ? 0 : delay,
         ease: [0.22, 1, 0.36, 1],
       }}
       className={className}

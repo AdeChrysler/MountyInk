@@ -10,7 +10,7 @@ export default function HeroSales() {
     reduced
       ? {}
       : {
-          initial: { opacity: 0, y: 24 },
+          initial: { opacity: 0, y: 16 },
           animate: { opacity: 1, y: 0 },
           transition: { duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] },
         };
@@ -19,18 +19,39 @@ export default function HeroSales() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background layers */}
       <div className="absolute inset-0 bg-gradient-hero" />
+
+      {/* Video background */}
       <div className="absolute inset-0 overflow-hidden">
-        <Image
-          src="/images/hero-sales.png"
-          alt="Tattoo artist at work in Mounty Ink studio"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover img-crop"
-        />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster="/images/portfolio-balinese-real-02.jpg"
+          className="w-full h-full object-cover img-crop"
+        >
+          <source src="/videos/reel-02.mp4" type="video/mp4" />
+        </video>
       </div>
-      <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/70 via-bg-primary/40 to-bg-primary" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#05050790_70%)]" />
+
+      {/* Fallback image for no-video support */}
+      <noscript>
+        <div className="absolute inset-0 overflow-hidden">
+          <Image
+            src="/images/portfolio-balinese-real-02.jpg"
+            alt="Full back Balinese Barong tattoo — Mounty Ink portfolio showcase"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover img-crop"
+          />
+        </div>
+      </noscript>
+
+      {/* Overlay gradients for readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/80 via-bg-primary/50 to-bg-primary" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#000000aa_70%)]" />
 
       {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-4xl pt-20">

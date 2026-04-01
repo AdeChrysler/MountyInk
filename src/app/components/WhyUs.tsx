@@ -37,7 +37,7 @@ const reasons = [
 
 export default function WhyUs() {
   return (
-    <section className="py-24 md:py-32 bg-bg-primary">
+    <section className="py-16 md:py-28 bg-bg-primary">
       <div className="max-w-7xl mx-auto px-6">
         <SectionHeading
           subtitle="Why Mounty Ink"
@@ -45,10 +45,10 @@ export default function WhyUs() {
           description="More than a tattoo studio — a destination for meaningful art."
         />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
           {reasons.map((reason, i) => (
             <ScrollReveal key={reason.title} delay={i * 0.08}>
-              <div className="group p-7 border border-divider hover:border-blue-electric/25 bg-gradient-card transition-all duration-500 h-full">
+              <div className="group p-5 md:p-7 border border-divider hover:border-blue-electric/25 bg-gradient-card transition-all duration-500 h-full">
                 <div className="w-11 h-11 mb-5 border border-blue-electric/20 flex items-center justify-center group-hover:border-blue-electric/50 group-hover:shadow-[0_0_24px_rgba(46,123,255,0.08)] transition-all duration-500">
                   <reason.icon size={20} className="text-blue-electric" strokeWidth={1.5} />
                 </div>

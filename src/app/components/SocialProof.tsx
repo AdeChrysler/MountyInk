@@ -4,17 +4,19 @@ import { Instagram } from "lucide-react";
 import { siteConfig } from "../lib/config";
 
 const instaImages = [
-  { src: "/images/insta-01.png", alt: "Latest tattoo work" },
-  { src: "/images/insta-02.png", alt: "Studio behind-the-scenes" },
-  { src: "/images/insta-03.png", alt: "Artist at work" },
-  { src: "/images/insta-04.png", alt: "Healed tattoo result" },
-  { src: "/images/insta-05.png", alt: "Bali studio vibes" },
-  { src: "/images/insta-06.png", alt: "Tattoo supplies flat lay" },
+  { src: "/images/portfolio-japanese-real.jpg", alt: "Japanese dragon koi half-sleeve tattoo" },
+  { src: "/images/portfolio-realism-real.jpg", alt: "Egyptian Bastet cat realistic forearm tattoo" },
+  { src: "/images/portfolio-balinese-real.jpg", alt: "Balinese full sleeve tattoo with Barong backdrop" },
+  { src: "/images/portfolio-blackgrey-real.jpg", alt: "Zeus mythology full sleeve in black and grey" },
+  { src: "/images/portfolio-realism-real-02.jpg", alt: "Lion with roses and roman numerals sleeve" },
+  { src: "/images/portfolio-balinese-real-02.jpg", alt: "Full back Balinese Barong demon mask" },
+  { src: "/images/portfolio-blackgrey-real-02.jpg", alt: "Phoenix eagle chest piece in black and grey" },
+  { src: "/images/portfolio-japanese-real.jpg", alt: "Japanese dragon koi half-sleeve detail" },
 ];
 
 export default function SocialProof() {
   return (
-    <section className="py-24 md:py-32 bg-bg-primary">
+    <section className="py-16 md:py-28 bg-bg-primary">
       <div className="max-w-7xl mx-auto px-6">
         <ScrollReveal className="text-center mb-14">
           <p className="text-blue-electric text-xs tracking-[0.3em] uppercase font-medium mb-4">
@@ -30,10 +32,13 @@ export default function SocialProof() {
 
         {/* Instagram grid */}
         <ScrollReveal>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
             {instaImages.map((img, i) => (
-              <div
+              <a
                 key={i}
+                href={siteConfig.contact.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group relative aspect-square cursor-pointer overflow-hidden"
               >
                 <Image
@@ -47,7 +52,7 @@ export default function SocialProof() {
                 <div className="absolute inset-0 bg-blue-electric/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <Instagram size={20} className="text-white" />
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </ScrollReveal>

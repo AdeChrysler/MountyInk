@@ -1,17 +1,10 @@
-import Image from "next/image";
 import ScrollReveal from "./ScrollReveal";
 import SectionHeading from "./SectionHeading";
 import { Star, MessageSquare } from "lucide-react";
 
-const avatars = [
-  "/images/avatar-01.png",
-  "/images/avatar-02.png",
-  "/images/avatar-03.png",
-];
-
 export default function Testimonials() {
   return (
-    <section className="py-24 md:py-32 bg-bg-secondary/30">
+    <section className="py-16 md:py-28 bg-bg-secondary/30">
       <div className="max-w-5xl mx-auto px-6">
         <SectionHeading
           subtitle="Client Experiences"
@@ -34,7 +27,7 @@ export default function Testimonials() {
         </ScrollReveal>
 
         {/* Promise cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-5">
           {[
             {
               title: "Before Your Session",
@@ -50,7 +43,7 @@ export default function Testimonials() {
             },
           ].map((card, i) => (
             <ScrollReveal key={card.title} delay={i * 0.12}>
-              <div className="bg-gradient-card border border-divider p-7 h-full flex flex-col text-center">
+              <div className="bg-gradient-card border border-divider p-5 md:p-7 h-full flex flex-col text-center">
                 <div className="w-10 h-10 mx-auto mb-5 border border-blue-electric/20 flex items-center justify-center">
                   <MessageSquare size={16} className="text-blue-electric" strokeWidth={1.5} />
                 </div>
@@ -60,20 +53,6 @@ export default function Testimonials() {
                 <p className="text-text-muted text-sm leading-relaxed flex-grow">
                   {card.description}
                 </p>
-
-                {/* Avatar */}
-                <div className="mt-5 pt-5 border-t border-divider flex justify-center">
-                  <div className="relative w-10 h-10 rounded-full overflow-hidden">
-                    <Image
-                      src={avatars[i]}
-                      alt="Client"
-                      fill
-                      sizes="40px"
-                      className="object-cover img-crop"
-                      loading="lazy"
-                    />
-                  </div>
-                </div>
               </div>
             </ScrollReveal>
           ))}
@@ -88,7 +67,7 @@ export default function Testimonials() {
               ))}
             </div>
             <p className="text-text-muted text-xs tracking-[0.1em] uppercase">
-              Reviews coming soon on Google
+              Committed to Five-Star Experiences
             </p>
           </div>
         </ScrollReveal>
