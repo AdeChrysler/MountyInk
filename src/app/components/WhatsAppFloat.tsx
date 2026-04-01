@@ -20,7 +20,7 @@ export default function WhatsAppFloat() {
       rel="noopener noreferrer"
       animate={{ opacity: show ? 1 : 0, scale: show ? 1 : 0.8, y: show ? 0 : 20 }}
       transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed bottom-6 right-6 z-50 w-13 h-13 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg shadow-[#25D366]/20 hover:scale-110 hover:shadow-xl hover:shadow-[#25D366]/30 transition-all duration-300"
+      className="fixed bottom-[4.5rem] lg:bottom-6 right-4 lg:right-6 z-50 w-13 h-13 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg shadow-[#25D366]/20 hover:scale-110 hover:shadow-xl hover:shadow-[#25D366]/30 transition-all duration-300"
       aria-label="Chat on WhatsApp"
       style={{ pointerEvents: show ? "auto" : "none" }}
     >

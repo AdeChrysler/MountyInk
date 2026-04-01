@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-divider bg-bg-primary">
       <div className="max-w-7xl mx-auto px-6 py-16 md:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 lg:gap-8">
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link href="/">
@@ -106,7 +106,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="mt-14 pt-8 border-t border-divider flex flex-col md:flex-row justify-between items-center gap-3">
+        <div className="mt-8 md:mt-14 pt-8 border-t border-divider flex flex-col md:flex-row justify-between items-center gap-3">
           <p className="text-text-muted/60 text-xs tracking-[0.15em]">
             &copy; 2026 {siteConfig.brand.name} &middot; Tattoo Studio &middot; Bali
           </p>

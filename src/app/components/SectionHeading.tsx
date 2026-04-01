@@ -22,7 +22,7 @@ export default function SectionHeading({
       <p className="text-blue-electric text-xs tracking-[0.3em] uppercase font-medium mb-4">
         {subtitle}
       </p>
-      <h2 className="font-[family-name:var(--font-heading)] text-4xl md:text-5xl lg:text-[3.5rem] text-text-primary font-semibold leading-[1.05] tracking-tight">
+      <h2 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] text-text-primary font-semibold leading-[1.05] tracking-tight">
         {title}
       </h2>
       {description && (

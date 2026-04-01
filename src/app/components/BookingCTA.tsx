@@ -30,7 +30,7 @@ export default function BookingCTA() {
               href={getWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-10 py-4 bg-white text-blue-deep font-semibold tracking-[0.12em] uppercase text-sm hover:bg-text-primary transition-colors duration-300 rounded-full"
+              className="px-6 sm:px-10 py-4 bg-white text-blue-deep font-semibold tracking-[0.12em] uppercase text-sm hover:bg-text-primary transition-colors duration-300 rounded-full"
             >
               Chat on WhatsApp
             </a>

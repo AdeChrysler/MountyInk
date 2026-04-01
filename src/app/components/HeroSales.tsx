@@ -84,13 +84,13 @@ export default function HeroSales() {
             href={getWhatsAppUrl()}
             target="_blank"
             rel="noopener noreferrer"
-            className="group px-10 py-4 bg-blue-electric text-white font-semibold tracking-[0.12em] uppercase text-sm rounded-full hover:bg-blue-deep transition-all duration-300 animate-glow-pulse"
+            className="group px-6 sm:px-10 py-4 bg-blue-electric text-white font-semibold tracking-[0.12em] uppercase text-sm rounded-full hover:bg-blue-deep transition-all duration-300 animate-glow-pulse"
           >
             Book via WhatsApp
           </a>
           <a
             href="#portfolio"
-            className="px-10 py-4 border border-text-muted/25 text-text-primary font-semibold tracking-[0.12em] uppercase text-sm rounded-full hover:border-blue-electric hover:text-blue-electric transition-all duration-300"
+            className="px-6 sm:px-10 py-4 border border-text-muted/25 text-text-primary font-semibold tracking-[0.12em] uppercase text-sm rounded-full hover:border-blue-electric hover:text-blue-electric transition-all duration-300"
           >
             Explore Our Work
           </a>

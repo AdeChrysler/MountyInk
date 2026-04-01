@@ -6,17 +6,17 @@ const studioImages = [
   {
     src: "/images/portfolio-balinese-real-02.jpg",
     alt: "Full back Balinese Barong demon mask tattoo masterpiece",
-    className: "col-span-2 row-span-2",
+    className: "md:col-span-2 md:row-span-2",
   },
   {
     src: "/images/portfolio-realism-real-02.jpg",
     alt: "Lion with roses and roman numerals full sleeve tattoo",
-    className: "col-span-2 row-span-1",
+    className: "md:col-span-2 md:row-span-1",
   },
   {
     src: "/images/portfolio-blackgrey-real.jpg",
     alt: "Zeus and eagle Greek mythology full sleeve in black and grey",
-    className: "col-span-2 row-span-1",
+    className: "md:col-span-2 md:row-span-1",
   },
 ];
 
@@ -31,7 +31,7 @@ export default function StudioGallery() {
         />
 
         <ScrollReveal>
-          <div className="grid grid-cols-4 gap-2 md:gap-3 auto-rows-[220px] md:auto-rows-[260px]">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-2 md:gap-3 auto-rows-[260px] md:auto-rows-[260px]">
             {studioImages.map((img, i) => (
               <div
                 key={i}
