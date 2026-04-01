@@ -1,12 +1,10 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { getWhatsAppUrl } from "@/app/lib/config";
 
 export default function HeroCompany() {
-  const reduced = useReducedMotion();
-
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-bg-primary">
 
@@ -47,17 +45,17 @@ export default function HeroCompany() {
 
       {/* Floating particles */}
       <motion.div
-        animate={reduced ? {} : { y: [0, -10, 0], opacity: [0.3, 0.55, 0.3] }}
+        animate={{ y: [0, -10, 0], opacity: [0.3, 0.55, 0.3] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         className="absolute top-[38%] left-[22%] w-1.5 h-1.5 rounded-full bg-blue-electric/45"
       />
       <motion.div
-        animate={reduced ? {} : { y: [0, 9, 0], opacity: [0.2, 0.4, 0.2] }}
+        animate={{ y: [0, 9, 0], opacity: [0.2, 0.4, 0.2] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
         className="absolute top-[62%] right-[28%] w-1 h-1 rounded-full bg-blue-electric/35"
       />
       <motion.div
-        animate={reduced ? {} : { y: [0, -7, 0], opacity: [0.15, 0.3, 0.15] }}
+        animate={{ y: [0, -7, 0], opacity: [0.15, 0.3, 0.15] }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 3 }}
         className="absolute top-[45%] right-[18%] w-1 h-1 rounded-full bg-blue-deep/70"
       />
@@ -67,7 +65,7 @@ export default function HeroCompany() {
 
         {/* Eyebrow */}
         <motion.div
-          initial={reduced ? {} : { opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mb-8 flex items-center justify-center gap-3"
@@ -81,7 +79,7 @@ export default function HeroCompany() {
 
         {/* Logo */}
         <motion.div
-          initial={reduced ? {} : { opacity: 0, scale: 0.96 }}
+          initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
           className="mb-8"
@@ -98,7 +96,7 @@ export default function HeroCompany() {
 
         {/* Tagline */}
         <motion.p
-          initial={reduced ? {} : { opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.7 }}
           className="text-text-secondary text-base sm:text-lg md:text-xl tracking-[0.18em] uppercase font-light"
@@ -108,7 +106,7 @@ export default function HeroCompany() {
 
         {/* Slash divider */}
         <motion.div
-          initial={reduced ? {} : { opacity: 0, scaleX: 0 }}
+          initial={{ opacity: 0, scaleX: 0 }}
           animate={{ opacity: 1, scaleX: 1 }}
           transition={{ duration: 0.6, delay: 1.1 }}
           className="mt-7 flex justify-center"
@@ -118,7 +116,7 @@ export default function HeroCompany() {
 
         {/* Subtitle */}
         <motion.p
-          initial={reduced ? {} : { opacity: 0, y: 12 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.4 }}
           className="mt-7 text-text-muted text-xs tracking-[0.3em] uppercase"
@@ -128,7 +126,7 @@ export default function HeroCompany() {
 
         {/* Description */}
         <motion.p
-          initial={reduced ? {} : { opacity: 0, y: 12 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.7 }}
           className="mt-5 text-text-muted/65 text-sm sm:text-base leading-relaxed max-w-sm mx-auto font-light"
@@ -138,7 +136,7 @@ export default function HeroCompany() {
 
         {/* Stats */}
         <motion.div
-          initial={reduced ? {} : { opacity: 0, y: 12 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 2.0 }}
           className="mt-10 flex items-center justify-center gap-10 sm:gap-14"
@@ -161,7 +159,7 @@ export default function HeroCompany() {
 
         {/* CTAs */}
         <motion.div
-          initial={reduced ? {} : { opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 2.3 }}
           className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
@@ -188,7 +186,7 @@ export default function HeroCompany() {
 
       {/* Scroll line */}
       <motion.div
-        initial={reduced ? {} : { scaleY: 0 }}
+        initial={{ scaleY: 0 }}
         animate={{ scaleY: 1 }}
         transition={{ delay: 2.8, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         className="absolute bottom-0 left-1/2 -translate-x-1/2 w-px h-16 bg-gradient-to-b from-transparent via-blue-electric/40 to-blue-electric origin-top"

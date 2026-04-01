@@ -1,20 +1,16 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { getWhatsAppUrl } from "../lib/config";
 
 export default function HeroSales() {
-  const reduced = useReducedMotion();
-  const animate = (delay: number) =>
-    reduced
-      ? {}
-      : {
-          initial: { opacity: 0, y: 16 },
-          animate: { opacity: 1, y: 0 },
-          transition: { duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] },
-        };
+  const anim = (delay: number) => ({
+    initial: { opacity: 0, y: 16 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] as const },
+  });
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -57,14 +53,14 @@ export default function HeroSales() {
       {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-4xl pt-20">
         <motion.p
-          {...animate(0.3)}
+          {...anim(0.3)}
           className="text-blue-electric text-xs tracking-[0.35em] uppercase font-medium mb-6"
         >
           Premium Tattoo Studio &middot; Bali
         </motion.p>
 
         <motion.h1
-          {...animate(0.5)}
+          {...anim(0.5)}
           className="font-[family-name:var(--font-heading)] text-[2.75rem] leading-[1] sm:text-6xl md:text-7xl lg:text-8xl font-semibold text-text-primary tracking-tight drop-shadow-[0_2px_24px_rgba(0,0,0,0.8)]"
         >
           Your Story,
@@ -73,7 +69,7 @@ export default function HeroSales() {
         </motion.h1>
 
         <motion.p
-          {...animate(0.7)}
+          {...anim(0.7)}
           className="mt-7 text-text-secondary text-base sm:text-lg md:text-xl max-w-xl mx-auto leading-relaxed"
         >
           Where world-class artists transform your vision into wearable
@@ -81,7 +77,7 @@ export default function HeroSales() {
         </motion.p>
 
         <motion.div
-          {...animate(0.9)}
+          {...anim(0.9)}
           className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
         >
           <a
@@ -103,7 +99,7 @@ export default function HeroSales() {
 
       {/* Scroll Indicator */}
       <motion.div
-        initial={reduced ? {} : { opacity: 0 }}
+        initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
@@ -112,7 +108,7 @@ export default function HeroSales() {
           Scroll
         </span>
         <motion.div
-          animate={reduced ? {} : { y: [0, 6, 0] }}
+          animate={{ y: [0, 6, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         >
           <ChevronDown size={18} className="text-text-muted/40" />

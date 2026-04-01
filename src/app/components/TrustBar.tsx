@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView, useReducedMotion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { Star, ShieldCheck, Sparkles, Award } from "lucide-react";
 
 const highlights = [
@@ -14,7 +14,6 @@ const highlights = [
 export default function TrustBar() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
-  const reduced = useReducedMotion();
 
   return (
     <section className="border-y border-divider bg-bg-secondary/40" ref={ref}>
@@ -23,7 +22,7 @@ export default function TrustBar() {
           {highlights.map((item, i) => (
             <motion.div
               key={item.label}
-              initial={reduced ? {} : { opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.45, delay: i * 0.08 }}
               className="flex items-center gap-3 justify-center"
