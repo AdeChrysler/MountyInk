@@ -12,9 +12,9 @@ export const siteConfig = {
 
   contact: {
     // TODO: Replace with real contact info
-    phone: "+62 XXX XXXX XXXX",
+    phone: "+62 812-3973-2714",
     email: "hello@mountyink.com",
-    whatsapp: "62XXXXXXXXXXX",
+    whatsapp: "6281239732714",
     whatsappMessage: "Hi Mounty Ink! I'd like to book a tattoo session.",
     instagram: "https://www.instagram.com/mountyink.studio/"
   },
