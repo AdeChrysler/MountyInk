@@ -1,0 +1,19 @@
+name: Auto-push notification
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  confirm-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Confirm push received
+        run: |
+          echo "Push to main received at $(date)"
+          echo "Commit: ${{ github.sha }}"
+          echo "Author: ${{ github.actor }}"
