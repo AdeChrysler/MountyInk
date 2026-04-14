@@ -1,11 +1,48 @@
-import { User } from "lucide-react";
+import Image from "next/image";
 import ScrollReveal from "./ScrollReveal";
 import SectionHeading from "./SectionHeading";
 
 const artists = [
-  { specialty: "Realism & Portraits" },
-  { specialty: "Balinese & Japanese" },
-  { specialty: "Black & Grey" },
+  {
+    name: "Mr A",
+    specialty: "Japanese & Traditional Color",
+    bio: "A master of vibrant Japanese-style tattoos with bold color palettes. Known for full back pieces and sleeve work that blend traditional motifs with modern precision. Has tattooed internationally across Melbourne, Singapore, and Perth.",
+    image: "/images/artists/artist-a.jpg",
+    instagram: "@payouk_khandraink",
+    followers: "3.7K",
+  },
+  {
+    name: "Mr B",
+    specialty: "Black & Grey Realism",
+    bio: "Specializing in dark, detailed black and grey realism. Expert in chest pieces, full leg sleeves, and arm work with incredible depth and shadow detail. A freelance artist based in Legian, Badung — always open for appointments.",
+    image: "/images/artists/artist-b.jpg",
+    instagram: "@astart_ink",
+    followers: "447",
+  },
+  {
+    name: "Mr C",
+    specialty: "Realism & Mixed Media",
+    bio: "One of Bali's most followed tattoo artists with 10K+ followers. A true seniman (artist) whose portfolio spans hyperrealistic portraits, animal realism, and mythology-inspired full sleeves. Has worked across Jakarta, Dubai, and beyond.",
+    image: "/images/artists/artist-c.jpg",
+    instagram: "@nanda_soveink",
+    followers: "10.8K",
+  },
+  {
+    name: "Mr D",
+    specialty: "Japanese Color & Mixed Styles",
+    bio: "A versatile artist bridging traditional Japanese color work with contemporary black and grey techniques. Known for bold koi fish, dragons, and floral compositions that command attention. Part of the Khandra Ink collective.",
+    image: "/images/artists/artist-d.jpg",
+    instagram: "@kunci_khandra.ink",
+    followers: "",
+  },
+  {
+    name: "Mr E",
+    specialty: "Black & Grey Mythology",
+    bio: "A Bali-based artist with deep expertise in mythological and religious-themed black and grey work. Creates intricate full sleeve compositions with incredible detail — from sacred imagery to dark fantasy. Every piece tells a story.",
+    image: "/images/artists/artist-e.jpg",
+    instagram: "@budi13_khandra.ink",
+    followers: "310",
+  },
 ];
 
 export default function TeamFull() {
@@ -18,29 +55,37 @@ export default function TeamFull() {
           description="A team of passionate artists dedicated to creating meaningful, wearable art."
         />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-5">
           {artists.map((artist, i) => (
             <ScrollReveal key={i} delay={i * 0.1}>
-              <div className="text-center">
-                <div className="relative aspect-[3/4] mb-5 overflow-hidden bg-gradient-card border border-divider flex items-center justify-center">
-                  <User size={48} className="text-text-muted/20" strokeWidth={1} />
+              <div className="group text-center">
+                <div className="relative aspect-[3/4] mb-4 overflow-hidden rounded-lg border border-divider">
+                  <Image
+                    src={artist.image}
+                    alt={`${artist.name} - ${artist.specialty} tattoo artist`}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
                 </div>
-                <div className="w-6 h-px bg-blue-electric/30 mx-auto mb-3" />
-                <p className="text-text-secondary text-xs tracking-[0.2em] uppercase">
+                <h3 className="font-[family-name:var(--font-heading)] text-xl text-text-primary font-semibold mb-1">
+                  {artist.name}
+                </h3>
+                <p className="text-blue-electric text-[10px] tracking-[0.2em] uppercase font-medium mb-2">
                   {artist.specialty}
                 </p>
+                <p className="text-text-secondary text-xs leading-relaxed line-clamp-3 mb-3">
+                  {artist.bio}
+                </p>
+                <span className="text-text-muted text-[11px]">
+                  {artist.instagram}
+                  {artist.followers && (
+                    <span className="ml-1 opacity-60">· {artist.followers}</span>
+                  )}
+                </span>
               </div>
             </ScrollReveal>
           ))}
         </div>
-
-        <ScrollReveal className="text-center mt-16">
-          <p className="text-text-secondary text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
-            Each artist at Mounty Ink brings a distinct perspective and mastery
-            — spanning realism, fine line, sacred geometry, traditional Balinese,
-            Japanese, and watercolor styles.
-          </p>
-        </ScrollReveal>
       </div>
     </section>
   );
