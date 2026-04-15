@@ -6,7 +6,7 @@ const artists = [
   {
     name: "Mr A",
     specialty: "Japanese & Traditional Color",
-    bio: "A tattoo artist based in Badung, Bali and part of the Khandra Ink collective. Specializes in vibrant Japanese-style tattoos — from full-back dragon pieces and koi fish compositions to samurai-themed full sleeves in bold traditional color.",
+    bio: "A tattoo artist based in Abiansemal, Badung, Bali and part of the Khandra Ink collective. Specializes in vibrant Japanese-style tattoos — from full-back dragon pieces and koi fish compositions to samurai-themed full sleeves and expert cover-ups. International guest spots in Melbourne, Singapore, and Perth.",
     image: "https://s3.zenova.id/ads/monty-ink/avatars/mountyink-avatar-a.jpg",
     instagram: "@payouk_khandraink",
     followers: "3.7K",
@@ -28,10 +28,10 @@ const artists = [
   {
     name: "Mr C",
     specialty: "Mixed Media & Cover-Ups",
-    bio: "A seniman (artist) and tattoo artist based in Bali. The most followed artist on the team, known for a diverse portfolio spanning multiple techniques including detailed skull compositions, watercolor work, and expert cover-ups.",
+    bio: "A seniman (artist) and tattoo artist based in Bali with over 600 works in his portfolio. The most followed artist on the team, known for fierce animal portraits, mythology-inspired full sleeves, and expert cover-ups. Has worked internationally including Jakarta and Dubai.",
     image: "https://s3.zenova.id/ads/monty-ink/avatars/mountyink-avatar-c.jpg",
     instagram: "@nanda_soveink",
-    followers: "10.9K",
+    followers: "10.8K",
     portfolioSamples: [
       { src: "/images/portfolio-realism-real.jpg", alt: "Detailed skull composition tattoo" },
       { src: "/images/portfolio-realism-real-02.jpg", alt: "Watercolor mixed media tattoo" },
@@ -50,11 +50,11 @@ const artists = [
   },
   {
     name: "Mr E",
-    specialty: "Custom Tattoo Art",
-    bio: "A Bali-based tattoo artist at Khandra Ink, Seminyak. A dedicated member of the collective with an extensive portfolio of custom work, bringing each client's vision to life with care and attention to detail.",
+    specialty: "Black & Grey Mythology",
+    bio: "A Bali-based tattoo artist at Khandra Ink, Seminyak. With over 300 pieces in his portfolio, he specializes in black and grey work with mythological and religious themes — creating detailed full-body compositions that blend sacred imagery with dark fantasy elements.",
     image: "https://s3.zenova.id/ads/monty-ink/avatars/mountyink-avatar-e.jpg",
     instagram: "@budi13_khandra.ink",
-    followers: "311",
+    followers: "310",
     portfolioSamples: [
       { src: "/images/portfolio-balinese-real-02.jpg", alt: "Custom tattoo art piece" },
     ],
