@@ -10,6 +10,9 @@ const artists = [
     image: "/images/artists/artist-a.jpg",
     instagram: "@payouk_khandraink",
     followers: "3.7K",
+    portfolioSamples: [
+      { src: "/images/portfolio-japanese-real.jpg", alt: "Japanese dragon koi tattoo" },
+    ],
   },
   {
     name: "Mr B",
@@ -18,6 +21,9 @@ const artists = [
     image: "/images/artists/artist-b.jpg",
     instagram: "@astart_ink",
     followers: "447",
+    portfolioSamples: [
+      { src: "/images/portfolio-blackgrey-real.jpg", alt: "Black and grey Zeus mythology tattoo" },
+    ],
   },
   {
     name: "Mr C",
@@ -26,6 +32,10 @@ const artists = [
     image: "/images/artists/artist-c.jpg",
     instagram: "@nanda_soveink",
     followers: "10.8K",
+    portfolioSamples: [
+      { src: "/images/portfolio-realism-real.jpg", alt: "Egyptian Bastet cat realism tattoo" },
+      { src: "/images/portfolio-realism-real-02.jpg", alt: "Lion and roses full sleeve tattoo" },
+    ],
   },
   {
     name: "Mr D",
@@ -34,6 +44,9 @@ const artists = [
     image: "/images/artists/artist-d.jpg",
     instagram: "@kunci_khandra.ink",
     followers: "",
+    portfolioSamples: [
+      { src: "/images/portfolio-balinese-real.jpg", alt: "Balinese Barong full sleeve tattoo" },
+    ],
   },
   {
     name: "Mr E",
@@ -42,6 +55,9 @@ const artists = [
     image: "/images/artists/artist-e.jpg",
     instagram: "@budi13_khandra.ink",
     followers: "310",
+    portfolioSamples: [
+      { src: "/images/portfolio-balinese-real-02.jpg", alt: "Full back Balinese Barong tattoo" },
+    ],
   },
 ];
 
@@ -83,6 +99,27 @@ export default function ArtistSpotlight() {
                       <span className="ml-1 opacity-60">· {artist.followers}</span>
                     )}
                   </span>
+                  {artist.portfolioSamples.length > 0 && (
+                    <div className="flex justify-center gap-2 mt-3">
+                      {artist.portfolioSamples.map((sample, j) => (
+                        <a
+                          key={j}
+                          href="#portfolio"
+                          className="relative overflow-hidden rounded border border-divider hover:border-blue-electric/50 transition-colors flex-shrink-0"
+                          style={{ width: 68, height: 68 }}
+                          aria-label={`View ${artist.name}'s work in portfolio`}
+                        >
+                          <Image
+                            src={sample.src}
+                            alt={sample.alt}
+                            fill
+                            sizes="68px"
+                            className="object-cover transition-opacity duration-300 hover:opacity-80"
+                          />
+                        </a>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             </ScrollReveal>
