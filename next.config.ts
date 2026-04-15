@@ -7,6 +7,13 @@ const nextConfig: NextConfig = {
   reactStrictMode: false,
   images: {
     formats: ["image/avif", "image/webp"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "s3.zenova.id",
+        pathname: "/ads/**",
+      },
+    ],
   },
   turbopack: {
     root: path.resolve(__dirname),
