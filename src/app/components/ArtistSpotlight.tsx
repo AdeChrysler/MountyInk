@@ -4,7 +4,7 @@ import SectionHeading from "./SectionHeading";
 
 const artists = [
   {
-    name: "Payouk",
+    name: "Mr P",
     specialty: "Japanese & Traditional Color",
     bio: "A tattoo artist based in Abiansemal, Badung, Bali and part of the Khandra Ink collective. Specializes in vibrant Japanese-style tattoos — from full-back dragon pieces and koi fish compositions to samurai-themed full sleeves and expert cover-ups. International guest spots in Melbourne, Singapore, and Perth.",
     instagram: "@payouk_khandraink",
@@ -14,7 +14,7 @@ const artists = [
     ],
   },
   {
-    name: "Ediastawa",
+    name: "Mr E",
     specialty: "Japanese & Realism",
     bio: "A freelance tattoo artist based in Legian, Bali. Works across Japanese and realism styles — from oni mask and full-sleeve Japanese compositions to detailed skull pieces and Balinese barong designs. Open for appointments.",
     instagram: "@astart_ink",
@@ -24,7 +24,7 @@ const artists = [
     ],
   },
   {
-    name: "Nanda",
+    name: "Mr N",
     specialty: "Mixed Media & Cover-Ups",
     bio: "A seniman (artist) and tattoo artist based in Bali with over 600 works in his portfolio. The most followed artist on the team, known for fierce animal portraits, mythology-inspired full sleeves, and expert cover-ups. Has worked internationally including Jakarta and Dubai.",
     instagram: "@nanda_soveink",
@@ -35,7 +35,7 @@ const artists = [
     ],
   },
   {
-    name: "Kunci",
+    name: "Mr K",
     specialty: "Geometric & Fineline",
     bio: "A versatile tattoo artist at Khandra Ink, Bali, specializing in fineline work. His portfolio spans geometric full-sleeve compositions, intricate mandala designs, Japanese koi and samurai pieces, Greek mythology themes, and detailed realism.",
     instagram: "@kunci_khandra.ink",
@@ -45,7 +45,7 @@ const artists = [
     ],
   },
   {
-    name: "Budi",
+    name: "Mr B",
     specialty: "Black & Grey Mythology",
     bio: "A Bali-based tattoo artist at Khandra Ink, Seminyak. With over 300 pieces in his portfolio, he specializes in black and grey work with mythological and religious themes — creating detailed full-body compositions that blend sacred imagery with dark fantasy elements.",
     instagram: "@budi13_khandra.ink",
